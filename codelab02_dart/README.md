@@ -2,7 +2,7 @@
 
 Modifikasilah kode pada baris 3 di VS Code atau Editor Code favorit Anda berikut ini agar mendapatkan keluaran (output) sesuai yang diminta!
 
-![enter image description here](/img/Screenshot_1.png)
+![enter image description here](/codelab02_dart/img/Screenshot_1.png)
 
 
 # Soal 2
@@ -58,17 +58,17 @@ Struktur Dart mirip dengan C dan JavaScript sehingga mudah dipelajari, terutama 
 Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan Late variabel !
 
 ## Null Safety <br>
- ![enter image description here](/img/Screenshot_2.png)
+ ![enter image description here](/codelab02_dart/img/Screenshot_2.png)
 
 **Null Safety** berfungsi untuk memastikan bahwa sebuah variabel tidak bisa bernilai null kecuali secara eksplisit diizinkan.
 - Secara default, variabel tidak boleh null.
 - Jika ingin bisa null, harus diberi tanda ? pada tipe datanya.
 
 ## Late variabel <br>
-![enter image description here](/img/Screenshot_3.png)
+![enter image description here](/codelab02_dart/img/Screenshot_3.png)
 
 **Late Variable** digunakan ketika kita menunda inisialisasi variabel, tetapi kita menjamin variabel itu akan diisi sebelum digunakan. Biasanya dipakai untuk variabel yang nilainya baru diketahui belakangan. Jika digunakan sebelum diinisialisasi, akan error runtime.
 
 Contoh Ketika error:
 
-![enter image description here](/img/Screenshot_4.png)
+![enter image description here](/codelab02_dart/img/Screenshot_4.png)
