@@ -31,9 +31,11 @@ if (test) {
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan if/else.
 
 **Jawaban:** 
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_1_3.png)
 
 Kode akan error dikarenakan kondisi ```if (test2)``` hanya bisa berjalan normal jika variabel test2 bertipe data bool sedangkan variabel tersebut bertipe String. Berikut kode yang sudah direvisi:
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_1_3_rev.png)
 
 
@@ -54,6 +56,7 @@ while (counter < 33) {
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **Jawaban:**
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_2_1.png)
 
 Terjadi error dikarenakan variabel ```counter``` belum di inialisasi. Berikut kode yang sudah direvisi:
@@ -73,6 +76,7 @@ do {
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan do-while.
 
 **Jawaban:** 
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_2_3.png)
 
 Program akan melakukan perulangan lagi dikondisi ```counter = 32```, dan akan lanjut sampai ```counter < 77 ```atau berhenti sampai 76. Bedanya dengan ```while```, ```do while``` pengecekan kondisi dilakukan di akhir.
@@ -92,8 +96,10 @@ for (Index = 10; index < 27; index) {
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **Jawaban:** 
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_3_1.png)
 Terdapat beberapa kesalahan seperti variabel belum di inisialisasi untuk tipe datanya serta untuk variabel index tidak konsisten pengetikannya (ada yang ```index``` dan ```Index```). Berikut kode yang sudah direvisi:
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_3_1_rev.png)
 
 ## Langkah 3:
@@ -106,6 +112,7 @@ print(index);
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan for dan break-continue.
 
 **Jawaban:** Tidak ada output yang dihasilkan
+
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_3_3_rev.png)
 
 Hal ini dikarenakan ketika Cek ```else if (index > 1 || index < 7) continue;```
