@@ -1,3 +1,8 @@
+| Nama               | NIM        | Kelas   |
+| -------------------- | ------------ | --------- |
+| Dedy Bayu Setiawan | 2341720041 | TI - 3H |
+
+
 # Soal 1
 
 Modifikasilah kode pada baris 3 di VS Code atau Editor Code favorit Anda berikut ini agar mendapatkan keluaran (output) sesuai yang diminta!

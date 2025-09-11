@@ -1,17 +1,24 @@
+| Nama               | NIM        | Kelas   |
+| -------------------- | ------------ | --------- |
+| Dedy Bayu Setiawan | 2341720041 | TI - 3H |
+
+
 
 # Praktikum 1: Menerapkan Control Flows ("if/else")
 
 ## Langkah 1
+
 Ketik atau salin kode program berikut ke dalam fungsi main().
 
 ![Img_1_1](/codelab03_dart/img/Screenshot_1_1.png)
 
 ## Langkah 2
+
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan!
 
 **Penjelasan:**
 Terdapat beberapa kesalahan sintax pada kode tersebut sehingga mengakibatkan error. Kesalahan
-``` else If ``` yang benar adalah ```else if```, dan ```Else``` yang benar adalah ```else```. Berikut kode yang sudah direvisi:
+```else If``` yang benar adalah ```else if```, dan ```Else``` yang benar adalah ```else```. Berikut kode yang sudah direvisi:
 
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_1_1_rev.png)
 
@@ -22,15 +29,17 @@ Dikarenakan variabel ```test``` bernilai "test2" maka yang akan dijalankan yaitu
 ## Langkah 3
 
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
+
 ```
 String test = "true";
 if (test) {
    print("Kebenaran");
 }
 ```
+
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan if/else.
 
-**Jawaban:** 
+**Jawaban:**
 
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_1_3.png)
 
@@ -38,11 +47,10 @@ Kode akan error dikarenakan kondisi ```if (test2)``` hanya bisa berjalan normal 
 
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_1_3_rev.png)
 
-
-
 # Praktikum 2: Menerapkan Perulangan "while" dan "do-while"
 
 ## Langkah 1
+
 Ketik atau salin kode program berikut ke dalam fungsi main().
 
 ```
@@ -53,6 +61,7 @@ while (counter < 33) {
 ```
 
 ## Langkah 2
+
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **Jawaban:**
@@ -66,26 +75,30 @@ Terjadi error dikarenakan variabel ```counter``` belum di inialisasi. Berikut ko
 Kode tersebut akan melooping dengan while dimulai dari ```counter = 28``` sampai ```counter < 33``` atau berhenti di 32.
 
 ## Langkah 3
+
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
+
 ```
 do {
   print(counter);
   counter++;
 } while (counter < 77);
 ```
+
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan do-while.
 
-**Jawaban:** 
+**Jawaban:**
 
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_2_3.png)
 
 Program akan melakukan perulangan lagi dikondisi ```counter = 32```, dan akan lanjut sampai ```counter < 77 ```atau berhenti sampai 76. Bedanya dengan ```while```, ```do while``` pengecekan kondisi dilakukan di akhir.
 
-
 # Praktikum 3: Menerapkan Perulangan "for" dan "break-continue"
 
 ## Langkah 1
+
 Ketik atau salin kode program berikut ke dalam fungsi main().
+
 ```
 for (Index = 10; index < 27; index) {
   print(Index);
@@ -93,9 +106,10 @@ for (Index = 10; index < 27; index) {
 ```
 
 ## Langkah 2:
+
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
-**Jawaban:** 
+**Jawaban:**
 
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_3_1.png)
 Terdapat beberapa kesalahan seperti variabel belum di inisialisasi untuk tipe datanya serta untuk variabel index tidak konsisten pengetikannya (ada yang ```index``` dan ```Index```). Berikut kode yang sudah direvisi:
@@ -103,12 +117,15 @@ Terdapat beberapa kesalahan seperti variabel belum di inisialisasi untuk tipe da
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_3_1_rev.png)
 
 ## Langkah 3:
+
 Tambahkan kode program berikut di dalam for-loop, lalu coba eksekusi (Run) kode Anda.
+
 ```
 If (Index == 21) break;
 Else If (index > 1 || index < 7) continue;
 print(index);
 ```
+
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan for dan break-continue.
 
 **Jawaban:** Tidak ada output yang dihasilkan
@@ -125,8 +142,11 @@ Jadi setiap kali perulangan berjalan, selalu continue atau lompat ke iterasi ber
 
 Akibatnya, baris ```print(index);``` tidak pernah dijalankan, sehingga output kosong.
 
-
 # Tugas Praktikum
+
 Buatlah sebuah program yang dapat menampilkan bilangan prima dari angka 0 sampai 201 menggunakan Dart. Ketika bilangan prima ditemukan, maka tampilkan nama lengkap dan NIM Anda.
 
 ![Img_1_1_rev](/codelab03_dart/img/Screenshot_4_rev.png)
+
+*Hasil Run:*
+![Img_1_1_rev](/codelab03_dart/img/Screenshot_4_run.png)
