@@ -19,6 +19,8 @@ void main() {
 
     if (prima) {
       print("$i adalah bilangan prima -> Nama: $nama | NIM: $nim");
+    } else {
+      print("$i bukan bilangan prima");
     }
   }
 }

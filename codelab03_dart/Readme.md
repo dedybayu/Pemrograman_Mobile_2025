@@ -129,4 +129,4 @@ Akibatnya, baris ```print(index);``` tidak pernah dijalankan, sehingga output ko
 # Tugas Praktikum
 Buatlah sebuah program yang dapat menampilkan bilangan prima dari angka 0 sampai 201 menggunakan Dart. Ketika bilangan prima ditemukan, maka tampilkan nama lengkap dan NIM Anda.
 
-![Img_1_1_rev](/codelab03_dart/img/Screenshot_4.png)
+![Img_1_1_rev](/codelab03_dart/img/Screenshot_4_rev.png)
