@@ -22,6 +22,7 @@ print(list[1]);
 
 ## Langkah 2
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan!
+
 ![Img_1_1](/codelab04_dart/img/Screenshot_1_1.png)
 
 **Penjelasan:** Program tersebut membuat sebuah list [1, 2, 3], lalu menggunakan assert untuk memastikan panjang list adalah 3 dan nilai pada indeks ke-1 bernilai 2, yang keduanya benar sehingga tidak menimbulkan error. Setelah itu, program mencetak panjang list (3) dan isi indeks ke-1 (2). Kemudian elemen pada indeks ke-1 diubah dari 2 menjadi 1, sehingga list menjadi [1, 1, 3]. Perubahan ini juga diverifikasi dengan assert, lalu hasil akhirnya ditampilkan (1). Dengan demikian, output yang muncul di konsol adalah 3, 2, dan 1. 
@@ -42,6 +43,7 @@ void main() {
 
 ## Langkah 3
 Ubah kode pada langkah 1 menjadi variabel final yang mempunyai index = 5 dengan default value = null. Isilah nama dan NIM Anda pada elemen index ke-1 dan ke-2. Lalu print dan capture hasilnya.
+
 ![Img_1_1](/codelab04_dart/img/Screenshot_1_3.png)
 
 
@@ -56,7 +58,9 @@ print(halogens);
 
 ## Langkah 2
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! 
+
 ![Img_1_1](/codelab04_dart/img/Screenshot_2_2.png)
+
 Variabel halogens adalah sebuah Set di Dart, yaitu koleksi yang berisi elemen unik (tidak bisa duplikat) dan tidak menjamin urutan. Yang terjadi adalah program mencetak seluruh anggota himpunan halogens. Tidak ada error, hanya saja urutan tampilan elemen tidak dijamin tetap.
 
 ## Langkah 3
@@ -92,6 +96,7 @@ Ketik atau salin kode program berikut ke dalam fungsi main().
 
 ## Langkah 2
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
+
 ![Img_1_1](/codelab04_dart/img/Screenshot_3_1.png)
 
 ```gift``` Didefinisikan menggunakan {} dengan pasangan key–value, jadi otomatis menjadi sebuah Map. Key bertipe String ('first', 'second', 'fifth'). Value bisa campuran ('partridge', 'turtledoves', dan 1). ```nobleGases``` Sama-sama Map, tetapi key bertipe int (2, 10, 18). Value bertipe campuran: String untuk 2 & 10, dan int (2) untuk key 18.
@@ -111,9 +116,11 @@ nobleGases[10] = 'neon';
 nobleGases[18] = 'argon';
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
+
 ![Img_1_1](/codelab04_dart/img/Screenshot_3_3.png)
 
 Tambahkan elemen nama dan NIM Anda pada tiap variabel di atas (gifts, nobleGases, mhs1, dan mhs2). Dokumentasikan hasilnya dan buat laporannya!
+
 ![Img_1_1](/codelab04_dart/img/Screenshot_3_3_rev.png)
 
 
