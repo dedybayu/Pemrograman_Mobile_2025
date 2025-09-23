@@ -376,5 +376,51 @@ void main() {
 }
 ```
 ### 6. Jelaskan perbedaan Lexical scope dan Lexical closures! Berikan contohnya!
+**Lexical Scope** merupakan variabel bisa diakses sesuai letak penulisannya dalam kode.
+```
+void main() {
+  var name = "Dart";
+  void greet() {
+    print("Hello $name"); // bisa akses 'name' karena masih dalam scope
+  }
+  greet();
+}
+```
+**Lexical Closure** merupakan fungsi bisa "mengikat" variabel dari scope luar dan tetap mengingat nilainya meski scope luar selesai.
+```
+Function makeCounter() {
+  int count = 0;
+  return () {
+    count++;
+    return count;
+  };
+}
+
+void main() {
+  var counter = makeCounter();
+  print(counter()); // 1
+  print(counter()); // 2 (masih ingat nilai 'count')
+}
+```
 
 ### 7.  Jelaskan dengan contoh cara membuat return multiple value di Functions!
+Dart tidak bisa return banyak nilai langsung, tapi bisa pakai:
+
+**Record (Dart 3)**
+```
+(int, int) hitung(int a, int b) {
+  return (a + b, a * b);
+}
+
+void main() {
+  var (jumlah, kali) = hitung(3, 4);
+  print("Jumlah: $jumlah, Kali: $kali");
+}
+```
+
+**Atau pakai List/Map**
+```
+List<int> hitung(int a, int b) {
+  return [a + b, a * b];
+}
+```
