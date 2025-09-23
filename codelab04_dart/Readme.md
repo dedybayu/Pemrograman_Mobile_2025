@@ -140,6 +140,10 @@ print(list2.length);
 ## Langkah 2
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
+![Img_1_1](/codelab04_dart/img/Screenshot_4_1.png)
+
+**Penjelasan:** Terdapat error perbedaan nama variabel. Kode ini menunjukkan penggunaan spread operator (...) di Dart untuk menggabungkan/memasukkan isi dari list lain ke dalam list baru.
+
 ## Langkah 3
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
 
@@ -151,7 +155,14 @@ print(list3.length);
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
 
+![Img_1_1](/codelab04_dart/img/Screenshot_4_3.png)
+
+Terdapat kesalahan variabel list belum di inialisasi
+
 Tambahkan variabel list berisi NIM Anda menggunakan Spread Operators. Dokumentasikan hasilnya dan buat laporannya!
+
+![Img_1_1](/codelab04_dart/img/Screenshot_4_3_rev.png)
+
 
 ## Langkah 4
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -161,6 +172,17 @@ print(nav);
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Tunjukkan hasilnya jika variabel promoActive ketika true dan false.
 
+- jika ```promoActive == true```
+
+![Img_1_1](/codelab04_dart/img/Screenshot_4_4_1.png)
+
+- jika ```promoActive == false```
+
+![Img_1_1](/codelab04_dart/img/Screenshot_4_4_2.png)
+
+
+**Jawaban:** jika ```promoActive == true``` maka akan menambahkan isi/value "Outlet" terlihat dengan kode ```if (promoActive) 'Outlet'``` namun jika ```promoActive == true``` maka kondisi if tidak akan dieksekisi dan tidak akan menambahkan value "Outlet"
+
 ## Langkah 5
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
 ```
@@ -168,6 +190,17 @@ var nav2 = ['Home', 'Furniture', 'Plants', if (login case 'Manager') 'Inventory'
 print(nav2);
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Tunjukkan hasilnya jika variabel login mempunyai kondisi lain.
+
+- jika ```login = "Manager"```
+
+![Img_1_1](/codelab04_dart/img/Screenshot_4_5_1.png)
+
+- jika ```login = "CEO"```
+
+![Img_1_1](/codelab04_dart/img/Screenshot_4_5_2.png)
+
+**Jawaban:** jika ```login = "Manager"``` maka akan menambahkan isi/value "Inventory" terlihat dengan kode ```if (login case 'Manager') 'Inventory'``` namun jika ```login = "CEO"``` maka kondisi if tidak akan dieksekisi dan tidak akan menambahkan value "Inventory"
+
 
 ## Langkah 6
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -179,6 +212,9 @@ print(listOfStrings);
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Jelaskan manfaat Collection For dan dokumentasikan hasilnya.
 
+![Img_1_1](/codelab04_dart/img/Screenshot_4_6.png)
+
+**Jawaban:** Collection for adalah fitur Dart yang memungkinkan kita menulis perulangan langsung di dalam literal koleksi (List, Set, Map). Jadi kita bisa membangun isi list secara dinamis berdasarkan isi koleksi lain, tanpa harus bikin loop terpisah lalu menambahkan item manual.
 
 
 # Praktikum 5: Eksperimen Tipe Data Records
@@ -193,6 +229,16 @@ print(record)
 ## Langkah 2
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
+![Img_1_1](/codelab04_dart/img/Screenshot_5_1.png)
+
+**Penjelasan:** Record adalah tipe data baru di Dart (sejak Dart 3) untuk menyimpan beberapa nilai dalam satu variabel, mirip seperti tuple di bahasa lain. Bisa berisi nilai positional (berdasarkan urutan) dan named (berdasarkan nama).
+
+Ini membuat sebuah record dengan 4 elemen:
+- 'first' → positional (index ke-0).
+- a: 2 → named field dengan nama a.
+- b: true → named field dengan nama b.
+- 'last' → positional (index ke-1 kalau dihitung setelah named fields).
+
 
 ## Langkah 3
 Tambahkan kode program berikut di luar scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -204,6 +250,10 @@ Tambahkan kode program berikut di luar scope void main(), lalu coba eksekusi (Ru
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Gunakan fungsi tukar() di dalam main() sehingga tampak jelas proses pertukaran value field di dalam Records.
 
+![Img_1_1](/codelab04_dart/img/Screenshot_5_3.png)
+
+**Penjelasan:** Program tersebut mendefinisikan fungsi tukar yang menerima record (int, int), lalu melakukan destructuring agar elemen record bisa diakses ke variabel a dan b. Fungsi ini mengembalikan record baru dengan posisi elemen dibalik, misalnya dari (10, 20) menjadi (20, 10). Saat dipanggil di main, hasil tukar disimpan dalam variabel hasil dan dicetak ke layar sehingga outputnya (20, 10).
+
 
 ## Langkah 4
 Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -213,6 +263,12 @@ Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (R
 print(mahasiswa);
 ```
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Inisialisasi field nama dan NIM Anda pada variabel record ```mahasiswa``` di atas. Dokumentasikan hasilnya dan buat laporannya!
+
+![Img_1_1](/codelab04_dart/img/Screenshot_5_4_1.png)
+
+Dart tidak mengizinkan memanggil print(mahasiswa); tanpa nilai awal, karena variabel lokal non-nullable harus diinisialisasi sebelum digunakan.
+
+![Img_1_1](/codelab04_dart/img/Screenshot_5_4_2.png)
 
 
 ## Langkah 5
@@ -225,22 +281,100 @@ print(mahasiswa2.a); // Prints 2
 print(mahasiswa2.b); // Prints true
 print(mahasiswa2.$2); // Prints 'last'
 ```
-Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Gantilah salah satu isi record dengan nama dan NIM Anda, lalu dokumentasikan hasilnya dan buat laporannya!
+Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
+
+![Img_1_1](/codelab04_dart/img/Screenshot_5_5.png)
+
+Gantilah salah satu isi record dengan nama dan NIM Anda, lalu dokumentasikan hasilnya dan buat laporannya!
+
+![Img_1_1](/codelab04_dart/img/Screenshot_5_5_2.png)
 
 
 
 
 # Tugas Praktikum
-1. Silakan selesaikan Praktikum 1 sampai 5, lalu dokumentasikan berupa screenshot hasil pekerjaan Anda beserta penjelasannya!
+### 1. Silakan selesaikan Praktikum 1 sampai 5, lalu dokumentasikan berupa screenshot hasil pekerjaan Anda beserta penjelasannya!
 
-2. Jelaskan yang dimaksud Functions dalam bahasa Dart!
+### 2. Jelaskan yang dimaksud Functions dalam bahasa Dart!
+**Penjelasan:** Function adalah blok kode yang dapat dipanggil berulang kali untuk menjalankan tugas tertentu. 
+- Fungsi bisa menerima input (parameter), memproses, lalu mengembalikan output (return value).
 
-3. Jelaskan jenis-jenis parameter di Functions beserta contoh sintaksnya!
+Contoh:
+```
+int tambah(int a, int b) {
+  return a + b;
+}
 
-4. Jelaskan maksud Functions sebagai first-class objects beserta contoh sintaknya!
+void main() {
+  print(tambah(2, 3)); // 5
+}
+```
 
-5. Apa itu Anonymous Functions? Jelaskan dan berikan contohnya!
+### 3. Jelaskan jenis-jenis parameter di Functions beserta contoh sintaksnya!
+Dart punya beberapa jenis parameter:
 
-6. Jelaskan perbedaan Lexical scope dan Lexical closures! Berikan contohnya!
+#### Positional Parameter (wajib urutan)
+```
+void greet(String name, int age) {
+  print("Halo $name, umur $age tahun");
+}
 
-7.  Jelaskan dengan contoh cara membuat return multiple value di Functions!
+void main() {
+  greet("Budi", 20);
+}
+```
+#### Optional Positional Parameter (pakai [])
+```
+void greet(String name, [int? age]) {
+  print("Halo $name, umur $age");
+}
+
+void main() {
+  greet("Budi");       // tanpa umur
+  greet("Ani", 21);    // dengan umur
+}
+```
+
+#### Named Parameter (pakai {})
+```
+void greet({required String name, int age = 0}) {
+  print("Halo $name, umur $age tahun");
+}
+
+void main() {
+  greet(name: "Budi", age: 20);
+}
+```
+
+### 4. Jelaskan maksud Functions sebagai first-class objects beserta contoh sintaknya!
+**Jawaban:** fungsi di Dart diperlakukan seperti objek lain: bisa disimpan di variabel, dikirim sebagai parameter, atau dikembalikan dari fungsi lain.
+
+Contoh:
+```
+void cetakPesan(String msg) {
+  print(msg);
+}
+
+void main() {
+  var f = cetakPesan;   // simpan fungsi di variabel
+  f("Hello World!");    // panggil lewat variabel
+}
+```
+
+
+### 5. Apa itu Anonymous Functions? Jelaskan dan berikan contohnya!
+**Jawaban:** Anonymous function mrrupakan fungsi tanpa nama. Biasanya digunakan sekali pakai, sering dipakai sebagai callback.
+
+Contoh:
+```
+void main() {
+  var daftar = ['apel', 'pisang', 'jeruk'];
+
+  daftar.forEach((item) {
+    print("Buah: $item");
+  });
+}
+```
+### 6. Jelaskan perbedaan Lexical scope dan Lexical closures! Berikan contohnya!
+
+### 7.  Jelaskan dengan contoh cara membuat return multiple value di Functions!
