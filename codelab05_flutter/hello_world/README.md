@@ -1,8 +1,8 @@
-| Nama               | NIM        | Kelas   |
-| -------------------- | ------------ | --------- |
-| Dedy Bayu Setiawan | 2341720041 | TI - 3H |
+| No. Presensi | Nama               | NIM        | Kelas   |
+| ------------ | ------------------ | ---------- | ------- |
+| 08           | Dedy Bayu Setiawan | 2341720041 | TI - 3H |
 
-
+<br>
 
 # Praktikum 1: Membuat Project Flutter Baru
 
