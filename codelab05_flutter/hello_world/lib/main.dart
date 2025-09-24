@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/basic_widgets/image_widget.dart';
-import 'package:hello_world/basic_widgets/text_widget.dart';
+// import 'package:hello_world/basic_widgets/image_widget.dart';
+// import 'package:hello_world/basic_widgets/text_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +14,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('DBS Production'),
+        // appBar: AppBar(
+        //   title: const Text('DBS Production'),
+        // ),
+        // body: const MyLayout(null),
+        appBar: AppBar(title: const Text('Contoh TextField')),
+        body: const Padding(
+          padding: EdgeInsets.all(20.0),
+          child: TextField(
+            obscureText: false,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Enter your name',
+            ),
+          ),
         ),
-        body: const MyLayout(null),
       ),
     );
   }
@@ -32,18 +43,18 @@ class MyLayout extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         child: const Text('Show Alert'),
-        onPressed: (){
+        onPressed: () {
           showAlertDialog(context);
         },
-      )
-    );  
+      ),
+    );
   }
 }
 
 showAlertDialog(BuildContext context) {
   Widget okButton = ElevatedButton(
     child: const Text("OK"),
-    onPressed: () { 
+    onPressed: () {
       Navigator.of(context).pop();
     },
   );
@@ -51,9 +62,7 @@ showAlertDialog(BuildContext context) {
   AlertDialog alert = AlertDialog(
     title: const Text("My Title"),
     content: const Text("This is my message."),
-    actions: [
-      okButton,
-    ],
+    actions: [okButton],
   );
 
   showDialog(
@@ -85,16 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -102,16 +107,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50.0,
-        ),
-      ),
+      bottomNavigationBar: BottomAppBar(child: Container(height: 50.0)),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
-      ), 
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
