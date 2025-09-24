@@ -73,6 +73,10 @@ Buat file di basic_widgets > ```loading_cupertino.dart```. Import stateless widg
 
 ![Img_1_1](img/Screenshot_5_1_1.png)
 
+![Img_1_1](img/Screenshot_5_1_2.png)
+
+![Img_1_1](img/Screenshot_5_1_3.png)
+
 
 ## Langkah 2: Floating Action Button (FAB)
 Button widget terdapat beberapa macam pada flutter yaitu ButtonBar, DropdownButton, TextButton, FloatingActionButton, IconButton, OutlineButton, PopupMenuButton, dan ElevatedButton.
@@ -80,6 +84,19 @@ Button widget terdapat beberapa macam pada flutter yaitu ButtonBar, DropdownButt
 Buat file di basic_widgets > fab_widget.dart. Import stateless widget dari material. Lalu isi kode di dalam method Widget build adalah sebagai berikut.
 
 ![Img_1_1](img/Screenshot_5_2_1.png)
+
+Revisi di ```main.dart```
+
+![Img_1_1](img/Screenshot_5_2_2.png)
+
+Revisi di ```fab_widget.dart```
+
+![Img_1_1](img/Screenshot_5_2_3.png)
+
+Hasil:
+
+![Img_1_1](img/Screenshot_5_2_4.png)
+
 
 
 ## Langkah 3: Scaffold Widget
