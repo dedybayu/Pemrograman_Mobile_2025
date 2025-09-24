@@ -8,13 +8,35 @@
 
 ## Langkah 1
 
+![Img_1_1](img/Screenshot_1_1.png)
+
+## Langkah 2
+
+![Img_1_1](img/Screenshot_1_2.png)
+
+## Langkah 3
+
+![Img_1_1](img/Screenshot_1_3.png)
+
+## Langkah 4
+
+![Img_1_1](img/Screenshot_1_4.png)
+
+
+
 # Praktikum 2: Menghubungkan Perangkat Android atau Emulator
+
+![Img_1_1](img/Screenshot_2_1.png)
+
+**Sudah Terhubung**
 
 ## Langkah 1
 
 # Praktikum 3: Membuat Repository GitHub dan Laporan Praktikum
+[Link Repository Pemrograman Mobile 2025](https://github.com/dedybayu/Pemrograman_Mobile_2025/tree/main)
 
-## Langkah 1
+[Link Codelab05](https://github.com/dedybayu/Pemrograman_Mobile_2025/tree/main/codelab05_flutter/hello_world)
+
 
 # Praktikum 4: Menerapkan Widget Dasar
 
