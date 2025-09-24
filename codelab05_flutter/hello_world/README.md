@@ -45,3 +45,37 @@ Jangan lupa sesuaikan kode dan import di file ```main.dart``` kemudian akan tamp
 
 
 # Praktikum 5: Menerapkan Widget Material Design dan iOS Cupertino
+
+## Langkah 1: Cupertino Button dan Loading Bar
+Buat file di basic_widgets > ```loading_cupertino.dart```. Import stateless widget dari material dan cupertino. Lalu isi kode di dalam method Widget build adalah sebagai berikut.
+
+![Img_1_1](img/Screenshot_5_1_1.png)
+
+
+## Langkah 2: Floating Action Button (FAB)
+Button widget terdapat beberapa macam pada flutter yaitu ButtonBar, DropdownButton, TextButton, FloatingActionButton, IconButton, OutlineButton, PopupMenuButton, dan ElevatedButton.
+
+Buat file di basic_widgets > fab_widget.dart. Import stateless widget dari material. Lalu isi kode di dalam method Widget build adalah sebagai berikut.
+
+![Img_1_1](img/Screenshot_5_2_1.png)
+
+
+## Langkah 3: Scaffold Widget
+Scaffold widget digunakan untuk mengatur tata letak sesuai dengan material design.
+
+![Img_1_1](img/Screenshot_5_3_1.png)
+
+
+## Langkah 4: Dialog Widget
+Dialog widget pada flutter memiliki dua jenis dialog yaitu ```AlertDialog``` dan ```SimpleDialog```.
+
+Ubah isi kode ```main.dart``` seperti berikut.
+
+![Img_1_1](img/Screenshot_5_4_1.png)
+
+![Img_1_1](img/Screenshot_5_4_2.png)
+
+
+## Langkah 5: Input dan Selection Widget
+
+## Langkah 6: Date and Time Pickers
