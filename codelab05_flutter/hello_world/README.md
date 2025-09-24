@@ -80,7 +80,14 @@ Ubah isi kode ```main.dart``` seperti berikut.
 Flutter menyediakan widget yang dapat menerima input dari pengguna aplikasi yaitu antara lain Checkbox, Date and Time Pickers, Radio Button, Slider, Switch, TextField.
 
 Contoh penggunaan TextField widget adalah sebagai berikut:
+
 ![Img_1_1](img/Screenshot_5_5_1.png)
 
 
 ## Langkah 6: Date and Time Pickers
+Date and Time Pickers termasuk pada kategori input dan selection widget, berikut adalah contoh penggunaan Date and Time Pickers.
+
+![Img_1_1](img/Screenshot_5_6_1.png)
+
+![Img_1_1](img/Screenshot_5_6_2.png)
+
