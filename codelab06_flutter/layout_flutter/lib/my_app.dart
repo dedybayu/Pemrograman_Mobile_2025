@@ -3,6 +3,7 @@ import 'package:layout_flutter/widgets/title_section.dart';
 import 'package:layout_flutter/widgets/text_section.dart';
 import 'package:layout_flutter/widgets/button_section.dart';
 import 'package:layout_flutter/widgets/image_section.dart';
+import 'package:layout_flutter/widgets/comment_section.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,6 +42,20 @@ class MyApp extends StatelessWidget {
                     'gedhe-gedhe sing ngadheg jejeg, nggawe suasana magis koyo ing '
                     'film fantasi. Panggonan iki cocok kanggo njupuk foto, dolan '
                     'alam, utawa mung mlaku-mlaku santai ngrasakke hawa seger.',
+              ),
+              CommentSection(
+                comments: [
+                  {
+                    'name': 'Bayu',
+                    'text':
+                        'Panggonane adem tenan, cocok kanggo liburan bareng keluarga.',
+                  },
+                  {
+                    'name': 'Sari',
+                    'text':
+                        'Asri banget, foto-foto dadi apik koyo ing film fantasi 🌳✨.',
+                  },
+                ],
               ),
             ],
           ),
