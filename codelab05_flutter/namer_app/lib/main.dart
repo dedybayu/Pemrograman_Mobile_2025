@@ -64,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage(favorites: favorites);
         break;
+      case 2:
+        page = const SettingsPage();
+        break;
       default:
         throw UnimplementedError('no widget for index $selectedIndex');
     }
@@ -87,6 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 NavigationRailDestination(
                   icon: Icon(Icons.favorite),
                   label: Text('Favorites'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.settings),
+                  label: Text('Settings'),
                 ),
               ],
             ),
@@ -170,6 +177,20 @@ class FavoritesPage extends StatelessWidget {
             title: Text(pair.asLowerCase),
           ),
       ],
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        'Settings Page - coming soon!',
+        style: TextStyle(fontSize: 24),
+      ),
     );
   }
 }
