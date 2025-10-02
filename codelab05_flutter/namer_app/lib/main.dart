@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -29,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
   var current = WordPair.random();
   var favorites = <WordPair>[];
 
@@ -50,38 +51,125 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    IconData icon;
-    if (favorites.contains(current)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = GeneratorPage(
+          pair: current,
+          favorites: favorites,
+          onNext: getNext,
+          onToggleFavorite: toggleFavorite,
+        );
+        break;
+      case 1:
+        page = FavoritesPage(favorites: favorites);
+        break;
+      default:
+        throw UnimplementedError('no widget for index $selectedIndex');
     }
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BigCard(pair: current),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: toggleFavorite,
-                  icon: Icon(icon),
-                  label: const Text('Like'),
+      body: Row(
+        children: [
+          SafeArea(
+            child: NavigationRail(
+              selectedIndex: selectedIndex,
+              onDestinationSelected: (value) {
+                setState(() {
+                  selectedIndex = value;
+                });
+              },
+              destinations: const [
+                NavigationRailDestination(
+                  icon: Icon(Icons.home),
+                  label: Text('Home'),
                 ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: getNext,
-                  child: const Text('Next'),
+                NavigationRailDestination(
+                  icon: Icon(Icons.favorite),
+                  label: Text('Favorites'),
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: Container(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: page,
+            ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class GeneratorPage extends StatelessWidget {
+  const GeneratorPage({
+    super.key,
+    required this.pair,
+    required this.favorites,
+    required this.onNext,
+    required this.onToggleFavorite,
+  });
+
+  final WordPair pair;
+  final List<WordPair> favorites;
+  final VoidCallback onNext;
+  final VoidCallback onToggleFavorite;
+
+  @override
+  Widget build(BuildContext context) {
+    IconData icon =
+        favorites.contains(pair) ? Icons.favorite : Icons.favorite_border;
+
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BigCard(pair: pair),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton.icon(
+                onPressed: onToggleFavorite,
+                icon: Icon(icon),
+                label: const Text('Like'),
+              ),
+              const SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: onNext,
+                child: const Text('Next'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({super.key, required this.favorites});
+
+  final List<WordPair> favorites;
+
+  @override
+  Widget build(BuildContext context) {
+    if (favorites.isEmpty) {
+      return const Center(
+        child: Text('No favorites yet.'),
+      );
+    }
+
+    return ListView(
+      children: [
+        for (var pair in favorites)
+          ListTile(
+            leading: const Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
     );
   }
 }
