@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var current = WordPair.random();
+  var favorites = <WordPair>[];
 
   void getNext() {
     setState(() {
@@ -37,8 +38,25 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void toggleFavorite() {
+    setState(() {
+      if (favorites.contains(current)) {
+        favorites.remove(current);
+      } else {
+        favorites.add(current);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    IconData icon;
+    if (favorites.contains(current)) {
+      icon = Icons.favorite;
+    } else {
+      icon = Icons.favorite_border;
+    }
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -46,9 +64,20 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             BigCard(pair: current),
             const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: getNext,
-              child: const Text('Next'),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: toggleFavorite,
+                  icon: Icon(icon),
+                  label: const Text('Like'),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: getNext,
+                  child: const Text('Next'),
+                ),
+              ],
             ),
           ],
         ),
