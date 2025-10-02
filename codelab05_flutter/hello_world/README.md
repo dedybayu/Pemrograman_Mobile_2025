@@ -130,3 +130,9 @@ Date and Time Pickers termasuk pada kategori input dan selection widget, berikut
 
 ![Img_1_1](img/Screenshot_5_6_2.png)
 
+
+# Tugas Praktikum 
+Selesaikan Codelabs: Your first Flutter app, lalu buatlah laporan praktikumnya dan push ke repository GitHub Anda!
+
+**Link Codelabs Your first Flutter app:**
+[https://github.com/dedybayu/Pemrograman_Mobile_2025/tree/main/codelab05_flutter/namer_app](https://github.com/dedybayu/Pemrograman_Mobile_2025/tree/main/codelab05_flutter/namer_app)
