@@ -10,25 +10,39 @@
 
 ![Img_1_1](img/Screenshot_1_1.png)
 
-## Langkah 2: Buka file lib/main.dart
-
-![Img_1_1](img/Screenshot_1_2.png)
-
-## Langkah 3: Identifikasi layout diagram
-
-![Img_1_1](img/Screenshot_1_3.png)
-
 ## Langkah 4: Implementasi title row
 
-![Img_1_1](img/Screenshot_1_4.png)
+![Img_1_1](img/Screenshot_1_2.png)
 
 
 
 # Praktikum 2: Implementasi button row
+## Buat widget buttonSection
+![Img_1_1](img/Screenshot_2.png)
 
-# Praktikum 3: Implementasi text section 
+
+
+# Praktikum 3: Implementasi text section
+##  Buat widget buttonSection
+![Img_1_1](img/Screenshot_3.png)
+
 
 # Praktikum 4: Implementasi image section
+##  Buat widget imageSection
+
+![Img_1_1](img/Screenshot_4.png)
+
+# Kreasi: Membuat Comment 
+## Buat widget commentSection
+![Img_1_1](img/Screenshot_4_2.png)
+
+# Pemanggilan di class MyApp
+![Img_1_1](img/Screenshot_4_3.png)
+
+# Hasil Tampilan
+![Img_1_1](img/Screenshot_4_hasil.png)
+
+
 
 # Tugas Praktikum 1
 1. Selesaikan Praktikum 1 sampai 4, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md!

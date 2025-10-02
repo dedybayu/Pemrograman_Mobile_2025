@@ -8,7 +8,7 @@ class CommentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,8 +23,13 @@ class CommentSection extends StatelessWidget {
                 backgroundColor: Colors.purple,
                 child: Icon(Icons.person, color: Colors.white),
               ),
-              title: Text(comment['name'] ?? 'Anonim',
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              title: Text(
+                comment['name'] ?? 'Anonim',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               subtitle: Text(comment['text'] ?? ''),
             ),
         ],
