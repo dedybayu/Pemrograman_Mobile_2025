@@ -36,10 +36,10 @@
 ## Buat widget commentSection
 ![Img_1_1](img/Screenshot_4_2.png)
 
-# Pemanggilan di class MyApp
+## Pemanggilan di class MyApp
 ![Img_1_1](img/Screenshot_4_3.png)
 
-# Hasil Tampilan
+## Hasil Tampilan
 ![Img_1_1](img/Screenshot_4_hasil.png)
 
 
