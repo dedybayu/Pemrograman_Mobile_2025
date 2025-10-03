@@ -49,6 +49,8 @@
 
 ## 2. Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/3. layout-basics
 
+https://github.com/dedybayu/Pemrograman_Mobile_2025/tree/main/codelab06_flutter/basic_layout_flutter
+
 ### 1. Create a visible widget
 ![Img_1_1](img/basic_layout/Screenshot_1.png)
 
