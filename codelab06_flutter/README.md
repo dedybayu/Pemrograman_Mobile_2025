@@ -8,46 +8,100 @@
 
 ## Langkah 1: Buat Project Baru
 
-![Img_1_1](img/Screenshot_1_1.png)
+![Img_1_1](img/praktikum1-4/Screenshot_1_1.png)
 
 ## Langkah 4: Implementasi title row
 
-![Img_1_1](img/Screenshot_1_2.png)
+![Img_1_1](img/praktikum1-4/Screenshot_1_2.png)
 
 
 
 # Praktikum 2: Implementasi button row
 ## Buat widget buttonSection
-![Img_1_1](img/Screenshot_2.png)
+![Img_1_1](img/praktikum1-4/Screenshot_2.png)
 
 
 
 # Praktikum 3: Implementasi text section
 ##  Buat widget buttonSection
-![Img_1_1](img/Screenshot_3.png)
+![Img_1_1](img/praktikum1-4/Screenshot_3.png)
 
 
 # Praktikum 4: Implementasi image section
 ##  Buat widget imageSection
 
-![Img_1_1](img/Screenshot_4.png)
+![Img_1_1](img/praktikum1-4/Screenshot_4.png)
 
 # Kreasi: Membuat Comment 
 ## Buat widget commentSection
-![Img_1_1](img/Screenshot_4_2.png)
+![Img_1_1](img/praktikum1-4/Screenshot_4_2.png)
 
 ## Pemanggilan di class MyApp
-![Img_1_1](img/Screenshot_4_3.png)
+![Img_1_1](img/praktikum1-4/Screenshot_4_3.png)
 
 ## Hasil Tampilan
-![Img_1_1](img/Screenshot_4_hasil.png)
+![Img_1_1](img/praktikum1-4/Screenshot_4_hasil.png)
 
 
 
 # Tugas Praktikum 1
-1. Selesaikan Praktikum 1 sampai 4, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md!
-2. Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/3. layout-basics
-3. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!
+## 1. Selesaikan Praktikum 1 sampai 4, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md!
+
+## 2. Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/3. layout-basics
+
+### 1. Create a visible widget
+![Img_1_1](img/basic_layout/Screenshot_1.png)
+
+### 2. Aligning widgets
+Horisontal
+![Img_1_1](img/basic_layout/Screenshot_2_1.png)
+
+Vertikal
+![Img_1_1](img/basic_layout/Screenshot_2_2.png)
+
+### 3. Sizing widgets
+![Img_1_1](img/basic_layout/Screenshot_3_1.png)
+
+![Img_1_1](img/basic_layout/Screenshot_3_2.png)
+
+### 4. Packing widgets
+![Img_1_1](img/basic_layout/Screenshot_4.png)
+
+### 5. Nesting rows and columns
+![Img_1_1](img/basic_layout/Screenshot_5_1.png)
+![Img_1_1](img/basic_layout/Screenshot_5_2.png)
+![Img_1_1](img/basic_layout/Screenshot_5_3.png)
+
+![Img_1_1](img/basic_layout/Screenshot_5_4.png)
+
+### 6. Common layout widgets
+
+#### Container
+![Img_1_1](img/basic_layout/Screenshot_6_1.png)
+
+#### GridView
+![Img_1_1](img/basic_layout/Screenshot_6_2_1.png)
+
+![Img_1_1](img/basic_layout/Screenshot_6_2_2_1.png)
+![Img_1_1](img/basic_layout/Screenshot_6_2_2_2.png)
+![Img_1_1](img/basic_layout/Screenshot_6_2_2_3.png)
+
+#### ListView
+![Img_1_1](img/basic_layout/Screenshot_6_3.png)
+
+#### Stack
+![Img_1_1](img/basic_layout/Screenshot_6_4.png)
+
+
+### 7. Card
+![Img_1_1](img/basic_layout/Screenshot_7_1.png)
+
+![Img_1_1](img/basic_layout/Screenshot_7_2.png)
+
+![Img_1_1](img/basic_layout/Screenshot_7_3.png)
+
+
+## 3. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!
 
 # Praktikum 5: Membangun Navigasi di Flutter
 
