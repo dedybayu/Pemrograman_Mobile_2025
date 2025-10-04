@@ -293,6 +293,8 @@ Saya melakukan perubahan nama **file/class/variabel** dari **Item** menjadi **Pr
   kode ini berfungsi untuk menampilkan nama dan nim saya di footer pada home page
 
 ### Hasil:
+![Img_1_1](img/belanja/hasil/DedyBayu_Store.gif)
+
 
 
 <br>
@@ -339,5 +341,21 @@ Saya melakukan perubahan nama **file/class/variabel** dari **Item** menjadi **Pr
 <hr>
 
 # Hasil Akhir:
+![Img_1_1](img/belanja/hasil/DedyBayu_Store.gif)
+
+<br>
+
+![Img_1_1](img/belanja/hasil/home_page.png)
+
+<br>
+
+![Img_1_1](img/belanja/hasil/product_page.png)
+
+<br>
+
+![Img_1_1](img/belanja/hasil/preview_image.png)
+
+
+
 
 
