@@ -110,34 +110,34 @@ Vertikal
 # Praktikum 5: Membangun Navigasi di Flutter
 
 ## Langkah 1: Siapkan project baru
-![Img_1_1](img/belanja/image_1.png)
+![Img_1_1](img/belanja/awal/image_1.png)
 
 ## Langkah 2: Mendefinisikan Route
 home_page.dart
 
-![Img_1_1](img/belanja/image_2_1.png)
+![Img_1_1](img/belanja/awal/image_2_1.png)
 
 
 item_page.dart
 
-![Img_1_1](img/belanja/image_2_1.png)
+![Img_1_1](img/belanja/awal/image_2_1.png)
 
 
 ## Langkah 3: Lengkapi Kode di main.dart
-![Img_1_1](img/belanja/image_3.png)
+![Img_1_1](img/belanja/awal/image_3.png)
 
 
 ## Langkah 4: Membuat data model
-![Img_1_1](img/belanja/image_4.png)
+![Img_1_1](img/belanja/awal/image_4.png)
 
 ## Langkah 5: Lengkapi kode di class HomePage
-![Img_1_1](img/belanja/image_5.png)
+![Img_1_1](img/belanja/awal/image_5.png)
 
 ## Langkah 6: Membuat ListView dan itemBuilder
-![Img_1_1](img/belanja/image_6.png)
+![Img_1_1](img/belanja/awal/image_6.png)
 
 ## Langkah 7: Menambahkan aksi pada ListView
-![Img_1_1](img/belanja/image_7.png)
+![Img_1_1](img/belanja/awal/image_7.png)
 
 
 Tentu, ini adalah format markdown dari teks pada gambar tersebut:
@@ -151,26 +151,113 @@ Tentu, ini adalah format markdown dari teks pada gambar tersebut:
     ```dart
     Navigator.pushNamed(context, '/item', arguments: item);
     ```
-    ![Img_1_1](img/belanja/image_8.png)
+    ![Img_1_1](img/belanja/awal/image_8.png)
     
 2.  Pembacaan nilai yang dikirimkan pada halaman sebelumnya dapat dilakukan menggunakan `ModalRoute`. Tambahkan kode berikut pada blok fungsi `build` dalam halaman `ItemPage`. Setelah nilai didapatkan, anda dapat menggunakannya seperti penggunaan variabel pada umumnya. ([https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments](https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments))
 
     ```dart
     final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
     ```
-    ![Img_1_1](img/belanja/image_9_1.png)
+    ![Img_1_1](img/belanja/awal/image_9_1.png)
 
     hasil:
 
-    ![Img_1_1](img/belanja/image_9_2.png)
+    ![Img_1_1](img/belanja/awal/image_9_2.png)
+
+    price_formatter untuk format harga (tambahan)
+    ![Img_1_1](img/belanja/awal/image_5_2.png)
 
 
 3.  Pada hasil akhir dari aplikasi **belanja** yang telah anda selesaikan, tambahkan atribut foto produk, stok, dan rating. Ubahlah tampilan menjadi `GridView` seperti di aplikasi marketplace pada umumnya.
 
-
-
 4.  Silakan implementasikan `Hero widget` pada aplikasi **belanja** Anda dengan mempelajari dari sumber ini: [https://docs.flutter.dev/cookbook/navigation/hero-animations](https://docs.flutter.dev/cookbook/navigation/hero-animations)
 
 5.  Sesuaikan dan modifikasi tampilan sehingga menjadi aplikasi yang menarik. Selain itu, pecah widget menjadi kode yang lebih kecil. Tambahkan **Nama** dan **NIM** di footer aplikasi **belanja** Anda.
+
+
+# Jawaban soal 3 - 5
+## Struktur directory
+```
+lib/
+├── main.dart
+├── models/
+│   └── product.dart
+├── pages/
+│   ├── home_page.dart
+│   ├── item_page.dart
+│   └── preview_image.dart
+├── utils/
+│   └── price_formatter.dart
+├── widgets/
+│   ├── list_product/
+│   │   ├── list_product.dart
+│   │   ├── list_product_image.dart
+│   │   └── list_product_info.dart
+│   ├── product_page/
+│   │   ├── button_section.dart
+│   │   ├── button_with_text.dart
+│   │   ├── image_section.dart
+│   │   ├── review_section.dart
+│   │   ├── text_section.dart
+│   │   └── title_section.dart
+│   └── footer_section.dart
+```
+Saya melakukan perubahan nama **file/class/variabel** dari **Item** menjadi **Product** agar konsisten dan relevan dengan projek
+
+## Modifikasi dan Penambahan
+ 
+### main.dart
+  ![Img_1_1](img/belanja/modifikasi/image_1.png)
+  
+  Terdapat penambahan route baru ```/preview-image``` untuk menampilkan gambar secara full pada product page.
+
+
+### models/product.dart
+  ![Img_1_1](img/belanja/modifikasi/image_2.png)
+
+  Terdapat penambahan atribut ```code```, ```description```, dan ```image```. Image digunakan untuk menyimpan path gambar, deskripsi menyimpan deskripsi produk, dan code digunakan untuk menyimpan kode produk (saat ini digunakan untuk tag Hero agar unik).
+
+### utils/price_formatter.dart
+  ![Img_1_1](img/belanja/modifikasi/image_3.png)
+
+### pages/home_page.dart
+  ![Img_1_1](img/belanja/modifikasi/image_4.png)
+
+### pages/product_page.dart
+  ![Img_1_1](img/belanja/modifikasi/image_5.png)
+
+### pages/preview_image.dart
+  ![Img_1_1](img/belanja/modifikasi/image_6.png)
+
+### widgets/list_product/list_product.dart
+  ![Img_1_1](img/belanja/modifikasi/image_7.png)
+
+### widgets/list_product/list_product_image.dart
+  ![Img_1_1](img/belanja/modifikasi/image_8.png)
+
+### widgets/list_product/list_product_info.dart
+  ![Img_1_1](img/belanja/modifikasi/image_9.png)
+
+### widgets/product_page/button_section.dart
+  ![Img_1_1](img/belanja/modifikasi/image_10.png)
+
+### widgets/product_page/button_with_text.dart
+  ![Img_1_1](img/belanja/modifikasi/image_11.png)
+
+### widgets/product_page/image_section.dart
+  ![Img_1_1](img/belanja/modifikasi/image_12.png)
+
+### widgets/product_page/review_section.dart
+  ![Img_1_1](img/belanja/modifikasi/image_13.png)
+
+### widgets/product_page/text_section.dart
+  ![Img_1_1](img/belanja/modifikasi/image_14.png)
+
+### widgets/product_page/title_section.dart
+  ![Img_1_1](img/belanja/modifikasi/image_15.png)
+
+### widgets/footer_section.dart
+  ![Img_1_1](img/belanja/modifikasi/image_16.png)
+
 
 6.  Selesaikan Praktikum 5: Navigasi dan Rute tersebut. Cobalah modifikasi menggunakan plugin `go_router`, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file `README.md`. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati\!
