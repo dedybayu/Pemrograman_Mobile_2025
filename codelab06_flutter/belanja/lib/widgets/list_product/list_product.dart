@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:belanja/models/product.dart';
 import 'list_product_image.dart';
 import 'list_product_info.dart';
+import 'package:go_router/go_router.dart';
 
 class ListProduct extends StatelessWidget {
   final List<Product> products;
@@ -31,7 +32,8 @@ class ListProduct extends StatelessWidget {
             final product = products[index];
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/product', arguments: product);
+                // Navigator.pushNamed(context, '/product', arguments: product);
+                context.push('/product', extra: product);
               },
               child: Card(
                 child: Container(

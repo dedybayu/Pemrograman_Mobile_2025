@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PreviewImage extends StatelessWidget {
   const PreviewImage({super.key});
@@ -6,7 +7,8 @@ class PreviewImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Ambil argument
-    final args = ModalRoute.of(context)?.settings.arguments as Map;
+    // final args = ModalRoute.of(context)?.settings.arguments as Map;
+    final args = GoRouterState.of(context).extra as Map;
 
     final image = args['image'];
     final tag = args['tag'];

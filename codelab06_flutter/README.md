@@ -174,6 +174,9 @@ Tentu, ini adalah format markdown dari teks pada gambar tersebut:
 
 5.  Sesuaikan dan modifikasi tampilan sehingga menjadi aplikasi yang menarik. Selain itu, pecah widget menjadi kode yang lebih kecil. Tambahkan **Nama** dan **NIM** di footer aplikasi **belanja** Anda.
 
+<br>
+<hr>
+<br>
 
 # Jawaban soal 3 - 5
 ## Struktur directory
@@ -215,49 +218,126 @@ Saya melakukan perubahan nama **file/class/variabel** dari **Item** menjadi **Pr
 ### models/product.dart
   ![Img_1_1](img/belanja/modifikasi/image_2.png)
 
-  Terdapat penambahan atribut ```code```, ```description```, dan ```image```. Image digunakan untuk menyimpan path gambar, deskripsi menyimpan deskripsi produk, dan code digunakan untuk menyimpan kode produk (saat ini digunakan untuk tag Hero agar unik).
+  Terdapat penambahan atribut ```rating```, ```stock```, ```code```, ```description```, dan ```image```. Image digunakan untuk menyimpan path gambar, deskripsi menyimpan deskripsi produk, dan code digunakan untuk menyimpan kode produk (saat ini digunakan untuk tag Hero agar unik).
 
 ### utils/price_formatter.dart
   ![Img_1_1](img/belanja/modifikasi/image_3.png)
 
+  class ini digunakan untuk mengkonveri data int price menjadi string berformat rupiah Indonesia 
+
 ### pages/home_page.dart
   ![Img_1_1](img/belanja/modifikasi/image_4.png)
+
+  Kode ini digunakan untuk menampung isi dari home page, kode ini memanggil list produk
 
 ### pages/product_page.dart
   ![Img_1_1](img/belanja/modifikasi/image_5.png)
 
+  kode ini digunakan untuk menampilkan detail produk saat produk di list diklik. dalam kode ini akan terbagi menjadi beberapa section yaitu image, title, text, review, button, dan button_with_text. 
+
 ### pages/preview_image.dart
   ![Img_1_1](img/belanja/modifikasi/image_6.png)
+
+  kode ini berfungsi untuk menampilkan gambar penuh ketika gambar di product page di klik
 
 ### widgets/list_product/list_product.dart
   ![Img_1_1](img/belanja/modifikasi/image_7.png)
 
+  kode ini digunakan untuk menampilkan produk berbentuk card untuk dipanggil di home page. terbagi menjadi 2 section yaitu image dan info
+
 ### widgets/list_product/list_product_image.dart
   ![Img_1_1](img/belanja/modifikasi/image_8.png)
+
+  merupakan section dari list_product yang berfungsi untuk menampung/menampilkan gambar produk
 
 ### widgets/list_product/list_product_info.dart
   ![Img_1_1](img/belanja/modifikasi/image_9.png)
 
+  merupakan section dari list_product yang berfungsi untuk menampung/menampilkan info (nama, harga, rating) produk
+
+
 ### widgets/product_page/button_section.dart
   ![Img_1_1](img/belanja/modifikasi/image_10.png)
+
+  merupakan section dari produk page yang berfungsi untuk menampilkan button beli dan masukan ke keranjang, kode ini akan memanggil button_with_text
 
 ### widgets/product_page/button_with_text.dart
   ![Img_1_1](img/belanja/modifikasi/image_11.png)
 
+  kode ini berisi style untuk button masukan ke keranjang dan beli sekarang
+
 ### widgets/product_page/image_section.dart
   ![Img_1_1](img/belanja/modifikasi/image_12.png)
+
+  kode ini merupakan section dari product page yang berfungsi menampilkan gambar
 
 ### widgets/product_page/review_section.dart
   ![Img_1_1](img/belanja/modifikasi/image_13.png)
 
+  kode ini merupakan section dari product page yang berfungsi menampilkan review pembeli
+
 ### widgets/product_page/text_section.dart
   ![Img_1_1](img/belanja/modifikasi/image_14.png)
+
+  kode ini merupakan section dari product page yang berfungsi menampilkan deskripsi produk
 
 ### widgets/product_page/title_section.dart
   ![Img_1_1](img/belanja/modifikasi/image_15.png)
 
+  kode ini merupakan section dari product page yang berfungsi menampilkan nama produk, harga, stok, dan rating
+  
+
 ### widgets/footer_section.dart
   ![Img_1_1](img/belanja/modifikasi/image_16.png)
 
+  kode ini berfungsi untuk menampilkan nama dan nim saya di footer pada home page
+
+### Hasil:
+
+
+<br>
+<hr>
+<br>
 
 6.  Selesaikan Praktikum 5: Navigasi dan Rute tersebut. Cobalah modifikasi menggunakan plugin `go_router`, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file `README.md`. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati\!
+    
+  - Memodifikasi kode ```main.dart```
+
+      ![Img_1_1](img/belanja/go_router/image_1.png)
+
+      Mengganti route dari menggunakan MaterialApp menjadi GoRouter 
+
+
+  - Memodifikasi kode ```widgets/list_product/list_product.dart```
+
+      ![Img_1_1](img/belanja/go_router/image_2.png)
+
+      Mengganti ```Navigator.pushNamed``` menjadi ```context.push``` untuk route ```/product```
+      
+
+  - Memodifikasi kode ```pages/product_page.dart```
+
+      ![Img_1_1](img/belanja/go_router/image_3.png)
+
+      Mengganti ```ModalRoute``` menjadi ```GoRouterState``` di ProductPage
+
+      
+  - Memodifikasi kode ```widgets/product_page/image_section.dart```
+
+      ![Img_1_1](img/belanja/go_router/image_4.png)
+
+      Mengganti ```Navigator.pushNamed``` menjadi ```context.push``` untuk route ```/preview-image```
+
+      
+  - Memodifikasi kode ```pages/preview_image.dart```
+
+      ![Img_1_1](img/belanja/go_router/image_5.png)
+
+      Mengganti ```ModalRoute``` menjadi ```GoRouterState``` di PreviewImage
+
+<br>
+<hr>
+
+# Hasil Akhir:
+
+

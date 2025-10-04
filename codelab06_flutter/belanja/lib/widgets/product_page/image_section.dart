@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ImageSection extends StatelessWidget {
   const ImageSection({
@@ -21,11 +22,12 @@ class ImageSection extends StatelessWidget {
       ), // margin kanan kiri
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(
-            context,
-            '/preview-image',
-            arguments: {'image': image, 'title': name, 'tag': tag},
-          );
+          // Navigator.pushNamed(
+          //   context,
+          //   '/preview-image',
+          //   arguments: {'image': image, 'title': name, 'tag': tag},
+          // );
+          context.push('/preview-image', extra: {'image': image, 'title': name, 'tag': tag});
         },
         child: Hero(
           tag: tag,

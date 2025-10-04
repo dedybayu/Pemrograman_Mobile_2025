@@ -6,13 +6,15 @@ import 'package:belanja/widgets/product_page/image_section.dart';
 import 'package:belanja/widgets/product_page/text_section.dart';
 import 'package:belanja/widgets/product_page/title_section.dart';
 import 'package:belanja/utils/price_formatter.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final itemArgs = ModalRoute.of(context)!.settings.arguments as Product;
+    // final product = ModalRoute.of(context)!.settings.arguments as Product;
+    final product = GoRouterState.of(context).extra as Product;
 
     return Scaffold(
       appBar: AppBar(
@@ -27,17 +29,17 @@ class ProductPage extends StatelessWidget {
               child: Column(
                 children: [
                   ImageSection(
-                    image: itemArgs.image,
-                    name: itemArgs.name,
-                    tag: 'product_image_${itemArgs.code}',
+                    image: product.image,
+                    name: product.name,
+                    tag: 'product_image_${product.code}',
                   ),
                   TitleSection(
-                    name: itemArgs.name,
-                    price: PriceFormatter.format(itemArgs.price),
-                    rating: itemArgs.rating,
-                    stock: itemArgs.stock,
+                    name: product.name,
+                    price: PriceFormatter.format(product.price),
+                    rating: product.rating,
+                    stock: product.stock,
                   ),
-                  TextSection(description: itemArgs.description),
+                  TextSection(description: product.description),
                   ReviewSection(
                     reviews: [
                       {
