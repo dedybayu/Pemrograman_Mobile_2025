@@ -105,35 +105,72 @@ Vertikal
 
 ## 3. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!
 
+
+
 # Praktikum 5: Membangun Navigasi di Flutter
 
+## Langkah 1: Siapkan project baru
+![Img_1_1](img/belanja/image_1.png)
+
+## Langkah 2: Mendefinisikan Route
+home_page.dart
+
+![Img_1_1](img/belanja/image_2_1.png)
+
+
+item_page.dart
+
+![Img_1_1](img/belanja/image_2_1.png)
+
+
+## Langkah 3: Lengkapi Kode di main.dart
+![Img_1_1](img/belanja/image_3.png)
+
+
+## Langkah 4: Membuat data model
+![Img_1_1](img/belanja/image_4.png)
+
+## Langkah 5: Lengkapi kode di class HomePage
+![Img_1_1](img/belanja/image_5.png)
+
+## Langkah 6: Membuat ListView dan itemBuilder
+![Img_1_1](img/belanja/image_6.png)
+
+## Langkah 7: Menambahkan aksi pada ListView
+![Img_1_1](img/belanja/image_7.png)
+
+
+Tentu, ini adalah format markdown dari teks pada gambar tersebut:
+
+-----
+
 # Tugas Praktikum 2
-# Praktikum 5: Navigasi dan Rute
 
-1. **Pengiriman Data Antar Halaman**  
-   - Untuk mengirim data ke halaman berikutnya, gunakan `arguments` pada `Navigator`:  
-     ```dart
-     Navigator.pushNamed(context, '/item', arguments: item);
-     ```  
-   - Untuk membaca data yang dikirimkan, gunakan `ModalRoute` pada `ItemPage`:  
-     ```dart
-     final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
-     ```  
-   - Referensi: [Navigate with arguments](https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments)
+1.  Untuk melakukan pengiriman data ke halaman berikutnya, cukup menambahkan informasi `arguments` pada penggunaan `Navigator`. Perbarui kode pada bagian `Navigator` menjadi seperti berikut.
 
-2. **Pengembangan Tampilan Aplikasi Belanja**  
-   - Tambahkan atribut foto produk, stok, dan rating.  
-   - Ubah tampilan menjadi **GridView** seperti aplikasi marketplace pada umumnya.  
-   - Implementasikan **Hero widget** untuk animasi transisi produk.  
-     Referensi: [Hero Animations](https://docs.flutter.dev/cookbook/navigation/hero-animations)  
-   - Sesuaikan dan modifikasi tampilan agar lebih menarik.  
-   - Pecah widget menjadi kode yang lebih kecil agar lebih terstruktur.  
-   - Tambahkan **Nama dan NIM** pada footer aplikasi belanja.
+    ```dart
+    Navigator.pushNamed(context, '/item', arguments: item);
+    ```
+    ![Img_1_1](img/belanja/image_8.png)
+    
+2.  Pembacaan nilai yang dikirimkan pada halaman sebelumnya dapat dilakukan menggunakan `ModalRoute`. Tambahkan kode berikut pada blok fungsi `build` dalam halaman `ItemPage`. Setelah nilai didapatkan, anda dapat menggunakannya seperti penggunaan variabel pada umumnya. ([https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments](https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments))
 
-3. **Tugas Akhir & Dokumentasi**  
-   - Coba modifikasi navigasi menggunakan plugin **go_router**.  
-   - Dokumentasikan hasil pekerjaan berupa **screenshot** setiap tahap + **penjelasan** di file `README.md`.  
-   - Push hasil pekerjaan ke repository GitHub.  
-   - Kumpulkan **link commit repository GitHub** kepada dosen sesuai ketentuan.
+    ```dart
+    final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
+    ```
+    ![Img_1_1](img/belanja/image_9_1.png)
 
-# 
+    hasil:
+
+    ![Img_1_1](img/belanja/image_9_2.png)
+
+
+3.  Pada hasil akhir dari aplikasi **belanja** yang telah anda selesaikan, tambahkan atribut foto produk, stok, dan rating. Ubahlah tampilan menjadi `GridView` seperti di aplikasi marketplace pada umumnya.
+
+
+
+4.  Silakan implementasikan `Hero widget` pada aplikasi **belanja** Anda dengan mempelajari dari sumber ini: [https://docs.flutter.dev/cookbook/navigation/hero-animations](https://docs.flutter.dev/cookbook/navigation/hero-animations)
+
+5.  Sesuaikan dan modifikasi tampilan sehingga menjadi aplikasi yang menarik. Selain itu, pecah widget menjadi kode yang lebih kecil. Tambahkan **Nama** dan **NIM** di footer aplikasi **belanja** Anda.
+
+6.  Selesaikan Praktikum 5: Navigasi dan Rute tersebut. Cobalah modifikasi menggunakan plugin `go_router`, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file `README.md`. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati\!
