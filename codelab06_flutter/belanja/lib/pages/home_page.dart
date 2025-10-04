@@ -4,6 +4,8 @@ import 'package:belanja/models/product.dart';
 import 'package:belanja/widgets/footer_section.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+  
   @override
   Widget build(BuildContext context) {
     final List<Product> products = [
@@ -52,7 +54,10 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         Expanded(child: ListProduct(products: products)),
-        FooterSection(nama: '© Copyright 2025 - Dedy Bayu Setiawan', nim: '2341720041'),
+        FooterSection(
+          nama: '© Copyright 2025 - Dedy Bayu Setiawan',
+          nim: '2341720041',
+        ),
       ],
     );
   }

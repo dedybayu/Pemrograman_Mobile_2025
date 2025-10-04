@@ -31,7 +31,7 @@ class ListProduct extends StatelessWidget {
             final product = products[index];
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/item', arguments: product);
+                Navigator.pushNamed(context, '/product', arguments: product);
               },
               child: Card(
                 child: Container(

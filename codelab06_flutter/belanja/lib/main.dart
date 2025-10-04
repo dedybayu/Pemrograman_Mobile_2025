@@ -8,7 +8,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => HomePage(),
-      '/item': (context) => ProductPage(),
+      '/product': (context) => ProductPage(),
       '/preview-image': (context) => PreviewImage(),
     },
   ));

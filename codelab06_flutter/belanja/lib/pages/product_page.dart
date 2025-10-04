@@ -8,6 +8,8 @@ import 'package:belanja/widgets/product_page/title_section.dart';
 import 'package:belanja/utils/price_formatter.dart';
 
 class ProductPage extends StatelessWidget {
+  const ProductPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final itemArgs = ModalRoute.of(context)!.settings.arguments as Product;
