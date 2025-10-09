@@ -1,4 +1,4 @@
-import 'package:belanja/widgets/list_Product/list_product.dart';
+import 'package:belanja/widgets/list_product/list_product.dart';
 import 'package:flutter/material.dart';
 import 'package:belanja/models/product.dart';
 import 'package:belanja/widgets/footer_section.dart';
@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
         code: 'prd01',
         name: 'IEM KZ-ZVX',
         price: 248000,
-        image: 'images/kz_zvx.webp',
+        image: 'assets/images/kz_zvx.webp',
         rating: 4.5,
         stock: 29,
         description:
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         code: 'prd02',
         name: 'RAM 32GB DDR5',
         price: 2128000,
-        image: 'images/ram.jpg',
+        image: 'assets/images/ram.jpg',
         rating: 4.5,
         stock: 59,
         description:
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
         code: 'prd03',
         name: 'JBL BRX-300',
         price: 399800000,
-        image: 'images/jbl.webp',
+        image: 'assets/images/jbl.webp',
         rating: 5,
         stock: 10,
         description:
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
         code: 'prd04',
         name: 'Raspberry Pi-5',
         price: 2580000,
-        image: 'images/raspberry.png',
+        image: 'assets/images/raspberry.png',
         rating: 4.3,
         stock: 14,
         description:
