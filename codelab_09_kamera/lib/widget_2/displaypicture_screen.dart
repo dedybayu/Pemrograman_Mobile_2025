@@ -16,16 +16,16 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // background netral, tidak kena filter
+      backgroundColor: Colors.black, 
       appBar: AppBar(
         title: const Text('Display the Picture - 2341720041'),
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
       ),
       body: Container(
-        color: Colors.black, // area luar tetap hitam, tidak difilter
+        color: Colors.black, 
         alignment: Alignment.center,
-        child: ClipRect( // memastikan filter hanya dalam batas gambar
+        child: ClipRect( 
           child: ColorFiltered(
             colorFilter: ColorFilter.mode(
               filterColor.withOpacity(filterOpacity),
@@ -33,7 +33,7 @@ class DisplayPictureScreen extends StatelessWidget {
             ),
             child: Image.file(
               File(imagePath),
-              fit: BoxFit.contain, // gambar penuh tanpa melampaui batas
+              fit: BoxFit.contain, 
             ),
           ),
         ),
