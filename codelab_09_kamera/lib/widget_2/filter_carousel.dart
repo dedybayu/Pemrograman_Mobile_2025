@@ -7,10 +7,7 @@ import 'displaypicture_screen.dart';
 class PhotoFilterCarousel extends StatefulWidget {
   final CameraDescription camera;
 
-  const PhotoFilterCarousel({
-    super.key,
-    required this.camera,
-  });
+  const PhotoFilterCarousel({super.key, required this.camera});
 
   @override
   State<PhotoFilterCarousel> createState() => _PhotoFilterCarouselState();
@@ -24,9 +21,10 @@ class _PhotoFilterCarouselState extends State<PhotoFilterCarousel> {
     ...List.generate(
       Colors.primaries.length,
       (index) => Colors.primaries[(index * 4) % Colors.primaries.length],
-    )
+    ),
   ];
 
+  double opacity = 3.0;
   final _filterColor = ValueNotifier<Color>(Colors.white);
   bool _isCameraInitialized = false;
 
@@ -80,15 +78,29 @@ class _PhotoFilterCarouselState extends State<PhotoFilterCarousel> {
   }
 
   Widget _buildCameraWithFilter() {
-    return ValueListenableBuilder(
+    return ValueListenableBuilder<Color>(
       valueListenable: _filterColor,
       builder: (context, color, _) {
-        return ColorFiltered(
-          colorFilter: ColorFilter.mode(
-            color.withOpacity(0.3),
-            BlendMode.color,
+        if (!_cameraController.value.isInitialized) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final size = MediaQuery.of(context).size;
+        final scale = size.aspectRatio * _cameraController.value.aspectRatio;
+
+        return Transform.scale(
+          scale: scale < 1
+              ? 1 / scale
+              : scale, // menyesuaikan rasio kamera & layar
+          child: Center(
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                color.withOpacity(0.3),
+                BlendMode.color,
+              ),
+              child: CameraPreview(_cameraController),
+            ),
           ),
-          child: CameraPreview(_cameraController),
         );
       },
     );
@@ -103,22 +115,25 @@ class _PhotoFilterCarouselState extends State<PhotoFilterCarousel> {
   }
 
   Future<void> _takePicture() async {
-  try {
-    if (!_cameraController.value.isInitialized) return;
+    try {
+      if (!_cameraController.value.isInitialized) return;
 
-    final picture = await _cameraController.takePicture();
+      final picture = await _cameraController.takePicture();
 
-    if (!mounted) return;
+      if (!mounted) return;
 
-    // Pindah ke halaman preview
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => DisplayPictureScreen(imagePath: picture.path),
-      ),
-    );
-  } catch (e) {
-    print('Error mengambil gambar: $e');
+      // Pindah ke halaman preview
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => DisplayPictureScreen(
+            imagePath: picture.path,
+            filterColor: _filterColor.value,
+            filterOpacity: 0.3,
+          ),
+        ),
+      );
+    } catch (e) {
+      print('Error mengambil gambar: $e');
+    }
   }
-}
-
 }
