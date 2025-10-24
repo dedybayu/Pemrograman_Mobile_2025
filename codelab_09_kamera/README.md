@@ -119,5 +119,62 @@ lib/main.dart
 ![Img_1_1](readme_img/gif_hasil_2.gif)
 
 
+<br>
+<hr>
+<br>
+<br>
 
 
+# Tugas Praktikum
+
+## 1. Selesaikan Praktikum 1 dan 2, lalu dokumentasikan dan push ke repository Anda berupa screenshot setiap hasil pekerjaan beserta penjelasannya di file README.md! Jika terdapat error atau kode yang tidak dapat berjalan, silakan Anda perbaiki sesuai tujuan aplikasi dibuat!
+
+## 2. Gabungkan hasil praktikum 1 dengan hasil praktikum 2 sehingga setelah melakukan pengambilan foto, dapat dibuat filter carouselnya!
+
+### main.dart
+[kode lengkap main.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/main.dart)
+
+![Img_1_1](readme_img/image_3_1.png)
+
+### filter_carousel.dart
+[kode lengkap filter_carousel.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget_2/filter_carousel.dart)
+
+![Img_1_1](readme_img/image_3_2.png)
+
+
+### filter_item.dart
+[kode lengkap filter_item.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget_2/filter_item.dart)
+
+![Img_1_1](readme_img/image_3_3.png)
+
+
+### filter_selector.dart
+[kode lengkap filter_selector.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget_2/filter_selector.dart)
+
+![Img_1_1](readme_img/image_3_4.png)
+ 
+
+### carousel_flowdelegate.dart
+[kode lengkap filter_selector.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget_2/filter_selector.dart)
+
+![Img_1_1](readme_img/image_3_5.png)
+
+
+### displaypicture_screen.dart
+[kode lengkap displaypicture_screen.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget_2/displaypicture_screen.dart)
+
+![Img_1_1](readme_img/image_3_6.png)
+
+### Hasil Tampilan: 
+![gif](readme_img/gif_hasil_3.gif)
+
+
+
+
+## 3. Jelaskan maksud void async pada praktikum 1?
+Jawaban: ```Future<void> main() async``` digunakan agar fungsi ```main()``` dapat menjalankan proses secara asynchronous, yaitu proses yang membutuhkan waktu tanpa menghentikan jalannya program utama. Kata kunci ```async``` memungkinkan penggunaan ```await``` di dalam fungsi tersebut untuk menunggu hasil operasi yang berjalan lama, seperti inisialisasi kamera melalui ```availableCameras()```. Dengan demikian, program dapat memastikan bahwa kamera telah siap sebelum aplikasi Flutter dijalankan menggunakan r```unApp()```.
+
+## 4. Jelaskan fungsi dari anotasi ```@immutable``` dan @override ?
+**Jawaban:** Anotasi ```@immutable``` digunakan untuk menandai bahwa sebuah kelas bersifat tidak dapat diubah setelah objeknya dibuat (immutable). Artinya, semua properti dalam kelas tersebut harus bersifat final dan tidak boleh diubah nilainya selama siklus hidup objek tersebut. Dalam konteks Flutter, hal ini penting terutama pada widget seperti ```StatelessWidget``` agar tampilan aplikasi tetap konsisten, efisien, dan terhindar dari perubahan tak terduga yang dapat menyebabkan kesalahan render.
+
+## 5. Kumpulkan link commit repository GitHub Anda kepada dosen yang telah disepakati!
