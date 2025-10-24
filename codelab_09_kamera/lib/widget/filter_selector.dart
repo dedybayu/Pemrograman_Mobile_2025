@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'filter_item.dart';
 import 'carousel_flowdelegate.dart';
-import 'dart:math' as math;
 import 'package:flutter/rendering.dart' show ViewportOffset;
 
 @immutable
