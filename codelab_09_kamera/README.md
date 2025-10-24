@@ -62,7 +62,7 @@ lib/widget/takepicture_screen.dart
 ## Hasil:
 <p float="left">
   <img src="readme_img/image_hasil_1_1.jpg" width="45%" />
-  <img src="readme_img/image_hasil_1_1.jpg" width="45%" />
+  <img src="readme_img/image_hasil_1_2.jpg" width="45%" />
 </p>
 
 
@@ -78,15 +78,47 @@ lib/widget/takepicture_screen.dart
 ## Langkah 2: Buat widget Selector ring dan dark gradient
 lib/widget/filter_selector.dart
 
+[kode lengkap filter_selector.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget/filter_selector.dart)
+
+![Img_1_1](readme_img/image_2_2.png)
+
+
 ## Langkah 3: Buat widget photo filter carousel
 lib/widget/filter_carousel.dart
+
+[kode lengkap filter_carousel.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget/filter_carousel.dart)
+
+![Img_1_1](readme_img/image_2_3.png)
+
 
 ## Langkah 4: Membuat filter warna - bagian 1
 lib/widget/carousel_flowdelegate.dart
 
+[kode lengkap carousel_flowdelegate.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget/carousel_flowdelegate.dart)
+
+![Img_1_1](readme_img/image_2_4.png)
+
+
 ## Langkah 5: Membuat filter warna
 lib/widget/filter_item.dart
 
+[kode lengkap filter_item.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/widget/filter_item.dart)
+
+![Img_1_1](readme_img/image_2_5.png)
+
+
 ## Langkah 6: Implementasi filter carousel
 lib/main.dart
+
+[kode lengkap main.dart](https://github.com/dedybayu/Pemrograman_Mobile_2025/blob/main/codelab_09_kamera/lib/main.dart)
+
+![Img_1_1](readme_img/image_2_6.png)
+
+
+## Hasil:
+<p float="center" >
+  <img src="readme_img/gif_hasil_2.gif" width="45%" />
+</p>
+
+
 
