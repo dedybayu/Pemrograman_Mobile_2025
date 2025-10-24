@@ -116,9 +116,8 @@ lib/main.dart
 
 
 ## Hasil:
-<p float="center" >
-  <img src="readme_img/gif_hasil_2.gif" width="45%" />
-</p>
+![Img_1_1](readme_img/gif_hasil_2.gif)
+
 
 
 
