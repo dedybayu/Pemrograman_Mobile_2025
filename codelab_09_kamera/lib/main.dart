@@ -18,9 +18,22 @@ Future<void> main() async {
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: TakePictureScreen(
-        // Kirim kamera ke widget utama
+        // Kirim kamera ke w idget utama
         camera: firstCamera,
       ),
     ),
   );
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'widget/filter_carousel.dart';
+
+// void main() {
+//   runApp(
+//     const MaterialApp(
+//       home: PhotoFilterCarousel(),
+//       debugShowCheckedModeBanner: false,
+//     ),
+//   );
+// }
