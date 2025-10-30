@@ -370,7 +370,50 @@ class Plan {
 5. Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke dosen yang telah disepakati !
 
 
-##
+
+
+
+
+# Praktikum 3: Membuat State di Multiple Screens
+
+## Langkah 1: Edit PlanProvider
+
+
+## Langkah 2: Edit main.dart
+
+
+## Langkah 3: Edit plan_screen.dart
+
+
+## Langkah 5: Tambah getter Plan
+
+
+## Langkah 6: Method initState()
+
+
+## Langkah 7: Widget build
+
+
+## Langkah 8: Edit _buildTaskTile
+
+
+## Langkah 9: Buat screen baru
+
+
+## Langkah 10: Pindah ke class _PlanCreatorScreenState
+
+
+## Langkah 11: Pindah ke method build
+
+
+## Langkah 12: Buat widget _buildListCreator
+
+
+## Langkah 13: Buat void addPlan()
+
+
+## Langkah 14: Buat widget _buildMasterPlans()
+
 
 ##
 
@@ -388,5 +431,5 @@ class Plan {
 
 ##
 
-##
+#
 
