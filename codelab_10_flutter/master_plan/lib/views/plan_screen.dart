@@ -5,7 +5,7 @@ class PlanScreen extends StatefulWidget {
   const PlanScreen({super.key});
 
   @override
-  State createState() => _PlanScreenState();
+  State<PlanScreen> createState() => _PlanScreenState();
 }
 
 class _PlanScreenState extends State<PlanScreen> {

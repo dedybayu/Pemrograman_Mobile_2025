@@ -131,6 +131,38 @@ Widget _buildTaskTile(Task task, int index) {
 ![Gif1](readme_img/gif_hasil_1.gif)
 
 
+
+# Tugas Praktikum 1: Dasar State dengan Model-View
+
+1. **Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki.**
+
+2. **Jelaskan maksud dari langkah 4 pada praktikum tersebut! Mengapa dilakukan demikian?**
+    **Jawaban:**
+    ```dart
+    export 'plan.dart';
+    export 'task.dart';
+    ```
+    File ```data_layer.dart``` berfungsi sebagai “barrel file” atau penggabung ekspor.
+    Dengan file ini, kita bisa mengimpor seluruh model dari satu tempat saja, bukan satu per satu.
+
+
+3. **Mengapa perlu variabel plan di langkah 6 pada praktikum tersebut? Mengapa dibuat konstanta ?**
+    
+    **Jawaban:**
+    Karena fungsi variabel ```plan``` digunakan untuk menyimpan state dari seluruh daftar tugas (tasks) dalam aplikasi. Data di dalam plan digunakan di semua widget dalam PlanScreen. Saat pengguna menambah/mengedit task, data plan akan diperbarui dengan setState(). Plan dibuat konstanta karena ```Plan``` adalah immutable object (tidak diubah langsung) — setiap perubahan menghasilkan instance baru dari ```Plan```.
+
+
+4. **Lakukan capture hasil dari Langkah 9 berupa GIF, kemudian jelaskan apa yang telah Anda buat!**
+
+5. **Apa kegunaan method pada Langkah 11 dan 13 dalam lifecyle state ?**
+
+    **Jawaban:** 
+    ```initState()``` Dipanggil sekali saat pertama kali widget dibuat, menginisialisasi scrollController, menambahkan listener untuk mendeteksi event scroll dan menutup keyboard otomatis (menghapus fokus dari semua TextField). 
+
+    Sedangkan ```dispose()``` Dipanggil sekali saat widget dihapus dari tree (tidak digunakan lagi), membersihkan resource scrollController agar tidak terjadi memory leak. ```dispose()``` memastikan bahwa semua resource yang tidak dipakai lagi sudah dibuang dengan benar.
+
+6. **Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke dosen yang telah disepakati!**
+
 ##
 
 ##
