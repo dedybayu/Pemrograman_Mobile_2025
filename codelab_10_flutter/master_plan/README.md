@@ -127,7 +127,9 @@ Widget _buildTaskTile(Task task, int index) {
 ![Img_1_1](readme_img/image_1_13.png)
 
 
-##
+## Hasil
+![Gif1](readme_img/gif_hasil_1.gif)
+
 
 ##
 
