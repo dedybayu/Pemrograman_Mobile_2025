@@ -39,7 +39,7 @@ class _PlanScreenState extends State<PlanScreen> {
       body: ValueListenableBuilder<List<Plan>>(
         valueListenable: plansNotifier,
         builder: (context, plans, child) {
-          // pastikan current plan ditemukan
+          // cari plan aktif
           final currentPlan = plans.firstWhere(
             (p) => p.name == plan.name,
             orElse: () => plan,
@@ -90,8 +90,8 @@ class _PlanScreenState extends State<PlanScreen> {
     );
   }
 
-  Widget _buildTaskTile(Plan plan, Task task, int index,
-      ValueNotifier<List<Plan>> planNotifier) {
+  Widget _buildTaskTile(
+      Plan plan, Task task, int index, ValueNotifier<List<Plan>> planNotifier) {
     return ListTile(
       leading: Checkbox(
         value: task.complete,

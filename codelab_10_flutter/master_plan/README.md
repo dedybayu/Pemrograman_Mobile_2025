@@ -377,59 +377,307 @@ class Plan {
 # Praktikum 3: Membuat State di Multiple Screens
 
 ## Langkah 1: Edit PlanProvider
+``` dart
+import 'package:flutter/material.dart';
+import '../models/data_layer.dart';
 
+class PlanProvider extends InheritedNotifier<ValueNotifier<List<Plan>>> {
+  const PlanProvider({
+    super.key,
+    required Widget child,
+    required ValueNotifier<List<Plan>> notifier,
+  }) : super(child: child, notifier: notifier);
+
+  static ValueNotifier<List<Plan>> of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<PlanProvider>()!
+        .notifier!;
+  }
+}
+```
 
 ## Langkah 2: Edit main.dart
+```dart
+import 'package:flutter/material.dart';
+import 'package:master_plan/models/data_layer.dart';
+import 'package:master_plan/provider/plan_provider.dart';
+import 'package:master_plan/views/plan_creator_screen.dart';
 
+void main() => runApp(const MasterPlanApp());
+
+class MasterPlanApp extends StatelessWidget {
+  const MasterPlanApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PlanProvider(
+      notifier: ValueNotifier<List<Plan>>([]), 
+      child: MaterialApp(
+        title: 'State management app',
+        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        home: const PlanCreatorScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
+  }
+}
+
+```
 
 ## Langkah 3: Edit plan_screen.dart
+```dart
+class PlanScreen extends StatefulWidget {
+  final Plan plan;
+  const PlanScreen({super.key, required this.plan});
 
+  @override
+  State<PlanScreen> createState() => _PlanScreenState();
+}
+```
 
 ## Langkah 5: Tambah getter Plan
+```dart
+class _PlanScreenState extends State<PlanScreen> {
+  late final ScrollController scrollController;
 
+  Plan get plan => widget.plan;
+```
 
 ## Langkah 6: Method initState()
-
+```dart
+  @override
+  void initState() {
+    super.initState();
+    scrollController = ScrollController()
+      ..addListener(() {
+        FocusScope.of(context).requestFocus(FocusNode());
+      });
+  }
+```
 
 ## Langkah 7: Widget build
+```dart
+  @override
+  Widget build(BuildContext context) {
+    final ValueNotifier<List<Plan>> plansNotifier = PlanProvider.of(context);
 
+    return Scaffold(
+      appBar: AppBar(title: Text(plan.name)),
+      body: ValueListenableBuilder<List<Plan>>(
+        valueListenable: plansNotifier,
+        builder: (context, plans, child) {
+          // cari plan aktif
+          final currentPlan = plans.firstWhere(
+            (p) => p.name == plan.name,
+            orElse: () => plan,
+          );
+
+          return Column(
+            children: [
+              Expanded(child: _buildList(currentPlan, plansNotifier)),
+              SafeArea(child: Text(currentPlan.completenessMessage)),
+            ],
+          );
+        },
+      ),
+      floatingActionButton: _buildAddTaskButton(plansNotifier),
+    );
+  }
+```
 
 ## Langkah 8: Edit _buildTaskTile
+```dart
+  Widget _buildTaskTile(
+      Plan plan, Task task, int index, ValueNotifier<List<Plan>> planNotifier) {
+    return ListTile(
+      leading: Checkbox(
+        value: task.complete,
+        onChanged: (selected) {
+          final planIndex = planNotifier.value.indexWhere(
+            (p) => p.name == plan.name,
+          );
 
+          final updatedTasks = List<Task>.from(plan.tasks)
+            ..[index] = Task(
+              description: task.description,
+              complete: selected ?? false,
+            );
+
+          final updatedPlans = List<Plan>.from(planNotifier.value);
+          updatedPlans[planIndex] =
+              Plan(name: plan.name, tasks: updatedTasks);
+
+          planNotifier.value = updatedPlans;
+        },
+      ),
+      title: TextFormField(
+        initialValue: task.description,
+        decoration: const InputDecoration(
+          hintText: 'Tuliskan deskripsi tugas...',
+        ),
+        onChanged: (text) {
+          final planIndex = planNotifier.value.indexWhere(
+            (p) => p.name == plan.name,
+          );
+
+          final updatedTasks = List<Task>.from(plan.tasks)
+            ..[index] = Task(description: text, complete: task.complete);
+
+          final updatedPlans = List<Plan>.from(planNotifier.value);
+          updatedPlans[planIndex] =
+              Plan(name: plan.name, tasks: updatedTasks);
+
+          planNotifier.value = updatedPlans;
+        },
+      ),
+    );
+  }
+```
 
 ## Langkah 9: Buat screen baru
+```dart
+import 'package:flutter/material.dart';
+import '../models/data_layer.dart';
+import '../provider/plan_provider.dart';
+import 'plan_screen.dart';
 
+class PlanCreatorScreen extends StatefulWidget {
+  const PlanCreatorScreen({super.key});
+
+  @override
+  State<PlanCreatorScreen> createState() => _PlanCreatorScreenState();
+}
+```
 
 ## Langkah 10: Pindah ke class _PlanCreatorScreenState
+```dart
+class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
+  final textController = TextEditingController();
 
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+```
 
 ## Langkah 11: Pindah ke method build
-
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Master Plans DedyBayu'),
+        backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
+      ),
+      body: Column(
+        children: [
+          _buildListCreator(),
+          Expanded(child: _buildMasterPlans()),
+        ],
+      ),
+    );
+  }
+```
 
 ## Langkah 12: Buat widget _buildListCreator
-
+```dart
+  Widget _buildListCreator() {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Material(
+        color: Theme.of(context).cardColor,
+        elevation: 10,
+        child: TextField(
+          controller: textController,
+          decoration: const InputDecoration(
+            labelText: 'Add a plan',
+            contentPadding: EdgeInsets.all(20),
+          ),
+          onEditingComplete: addPlan,
+        ),
+      ),
+    );
+  }
+```
 
 ## Langkah 13: Buat void addPlan()
+```dart
+  void addPlan() {
+    final text = textController.text;
+    if (text.isEmpty) return;
 
+    final plan = Plan(name: text, tasks: []);
+    ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
+
+    planNotifier.value = List<Plan>.from(planNotifier.value)..add(plan);
+    textController.clear();
+    FocusScope.of(context).unfocus();
+  }
+```
 
 ## Langkah 14: Buat widget _buildMasterPlans()
+```dart
+  Widget _buildMasterPlans() {
+    ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
+
+    return ValueListenableBuilder<List<Plan>>(
+      valueListenable: planNotifier,
+      builder: (context, plans, _) {
+        if (plans.isEmpty) {
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.note, size: 100, color: Colors.grey),
+                Text('Anda belum memiliki rencana apapun.'),
+              ],
+            ),
+          );
+        }
+
+        return ListView.builder(
+          itemCount: plans.length,
+          itemBuilder: (context, index) {
+            final plan = plans[index];
+            return ListTile(
+              title: Text(plan.name),
+              subtitle: Text(plan.completenessMessage),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => PlanScreen(plan: plan)),
+                );
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+```
+
+## Hasil:
+![Gif1](readme_img/gif_hasil_3.gif)
 
 
-##
 
-##
 
-##
+# Tugas Praktikum 3: State di Multiple Screens
 
-##
+1. Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki sesuai dengan tujuan aplikasi tersebut dibuat.
 
-##
 
-##
+2. Berdasarkan Praktikum 3 yang telah Anda lakukan, jelaskan maksud dari gambar diagram berikut ini!
 
-##
+    * **Bagian kiri:** Menunjukkan struktur halaman awal aplikasi, yaitu `PlanCreatorScreen`, yang berisi `TextField` untuk menambah rencana dan `ListView` untuk menampilkan daftar rencana yang sudah dibuat.
+    * **Navigator.push():** Digunakan untuk berpindah dari halaman utama ke halaman baru (`PlanScreen`) ketika pengguna memilih salah satu rencana dari daftar.
+    * **Bagian kanan:** Menunjukkan struktur halaman kedua, yaitu `PlanScreen`, yang menampilkan detail isi plan beserta daftar tugasnya menggunakan `ListView` dan `Text`.
+    * **PlanProvider:** Tetap berada di atas kedua layar (di bawah `MaterialApp`), berfungsi menyimpan dan membagikan data rencana agar tetap konsisten di seluruh aplikasi.
+    * **Makna utama:** Diagram ini menggambarkan bagaimana Flutter membuat halaman baru dengan pohon widget baru melalui `Navigator.push()`, tanpa menghapus data karena state tetap disimpan di `PlanProvider`.
 
-##
+3. Lakukan capture hasil dari Langkah 14 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
 
-#
+4. Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke dosen yang telah disepakati !
+
 

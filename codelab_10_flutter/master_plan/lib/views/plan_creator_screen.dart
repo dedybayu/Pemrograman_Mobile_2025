@@ -22,7 +22,6 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Ganti 'DedyBayu' dengan nama panggilanmu
       appBar: AppBar(
         title: const Text('Master Plans DedyBayu'),
         backgroundColor: Colors.deepPurple,
@@ -57,17 +56,14 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
 
   void addPlan() {
     final text = textController.text;
-    if (text.isEmpty) {
-      return;
-    }
+    if (text.isEmpty) return;
 
     final plan = Plan(name: text, tasks: []);
     ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
 
     planNotifier.value = List<Plan>.from(planNotifier.value)..add(plan);
     textController.clear();
-    FocusScope.of(context).requestFocus(FocusNode());
-    setState(() {});
+    FocusScope.of(context).unfocus();
   }
 
   Widget _buildMasterPlans() {
@@ -77,12 +73,14 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
       valueListenable: planNotifier,
       builder: (context, plans, _) {
         if (plans.isEmpty) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Icon(Icons.note, size: 100, color: Colors.grey),
-              Text('Anda belum memiliki rencana apapun.'),
-            ],
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.note, size: 100, color: Colors.grey),
+                Text('Anda belum memiliki rencana apapun.'),
+              ],
+            ),
           );
         }
 
