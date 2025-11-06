@@ -128,3 +128,84 @@ Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan A
 ![Img_1_1](readme_img/gif1.gif)
 
 
+# Praktikum 2: Menggunakan await/async untuk menghindari callbacks
+
+## Langkah 1: Buka file main.dart
+Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageState.
+```dart
+  Future<Response> getData() async {
+    const authority = 'www.googleapis.com';
+    const path = '/books/v1/volumes/S0ZNe2iqM54C';
+    Uri url = Uri.https(authority, path);
+    return http.get(url);
+  }
+
+  Future<int> returnOneAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 1;
+  }
+
+  Future<int> returnTwoAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 2;
+  }
+
+  Future<int> returnThreeAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 3;
+  }
+```
+## Langkah 2: Tambah method count()
+```dart
+  Future<int> returnThreeAsync() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return 3;
+  }
+
+  Future count() async {
+    int total = 0;
+
+    total = await returnOneAsync();
+    total += await returnTwoAsync();
+    total += await returnThreeAsync();
+    
+    setState(() {
+      result = total.toString();
+    });
+  }
+```
+## Langkah 3: Panggil count()
+```dart
+            ElevatedButton(
+              child: const Text('GO!'),
+              onPressed: () {
+                count();
+                // setState(() {});
+                // getData()
+                //     .then((value) {
+```
+## Langkah 4: Run
+![Img_1_1](readme_img/gif1.gif)
+
+### Soal 4
+- Jelaskan maksud kode langkah 1 dan 2 tersebut!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 4".
+
+
+# Praktikum 3: Menggunakan Completer di Future
+
+## Langkah 1: Buka main.dart
+Pastikan telah impor package async
+```dart
+import 'dart:async';
+```
+## Langkah 2: Tambahkan variabel dan method
+Tambahkan variabel late dan method di class _FuturePageState
+
+## Langkah 3: Ganti isi kode onPressed()
+
+## Langkah 4:
+
+## 
+## 
+## 
