@@ -355,9 +355,76 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
 ![Img_1_1](readme_img/gif4-2.gif)
 
 
-## 
-## 
-## 
+# Praktikum 5: Menangani Respon Error pada Async Code
+
+## Langkah 1: Buka file main.dart
+```dart
+  }
+
+  Future<int> returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened!');
+  }
+}
+```
+## Langkah 2: ElevatedButton
+```dart
+  child: const Text('GO!'),
+  onPressed: () {
+    returnError()
+        .then((value) {
+          setState(() {
+            result = 'Success';
+          });
+        })
+        .catchError((onError) {
+          setState(() {
+            result = onError.toString();
+          });
+        })
+        .whenComplete(() {
+          print('Complete');
+        });
+        
+    // returnFG();
+```
+## Langkah 3: Run
+
+![Img_1_1](readme_img/image5-1.png)
+
+
+### Soal 9
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9".
+
+![Img_1_1](readme_img/gif5-1.gif)
+
+## Langkah 4: Tambah method handleError()
+```dart
+  onPressed: () {
+    handleError()
+        .then((value) {
+          setState(() {
+            result = 'Success';
+          });
+        })
+        .catchError((onError) {
+          setState(() {
+            result = onError.toString();
+          });
+        })
+        .whenComplete(() {
+          print('Complete');
+        });
+```
+
+## Hasil:
+![Img_1_1](readme_img/gif5-2.gif)
+
+
+### Soal 10
+Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+
 ## 
 ## 
 ## 
