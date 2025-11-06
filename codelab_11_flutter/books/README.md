@@ -284,3 +284,66 @@ class _FuturePageState extends State<FuturePage> {
 - Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 6".
+
+
+# Praktikum 4: Memanggil Future secara paralel
+
+## Langkah 1: Buka file main.dart
+Tambahkan method ini ke dalam class _FuturePageState
+```dart
+  }
+
+  void returnFG(){
+    FutureGroup<int> futureGroup = FutureGroup<int>();
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+    futureGroup.future.then((List <int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString();
+      });
+    });
+  }
+}
+```
+## Langkah 2: Edit onPressed()
+```dart
+    child: const Text('GO!'),
+    onPressed: () {
+      returnFG();
+      // getNumber()
+      //     .then((value) {
+      //       setState(() {
+```
+## Langkah 3: Run
+![Img_1_1](readme_img/gif4-1.gif.gif)
+
+### Soal 7
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 7".
+
+
+## Langkah 4: Ganti variabel futureGroup
+
+## Soal 8
+Jelaskan maksud perbedaan kode langkah 1 dan 4!
+
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
