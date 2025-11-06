@@ -783,31 +783,97 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
 ```
 
 ## Langkah 3: Tambah method async
-
+```dart
+  _showColorDialog(BuildContext context) async {
+    await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text('Very important question'),
+          content: const Text('Please choose a color'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Blue'),
+              onPressed: () {
+                color = const Color.fromARGB(255, 7, 4, 136);
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Yellow'),
+              onPressed: () {
+                color = Colors.yellow.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Purple'),
+              onPressed: () {
+                color = Colors.deepPurpleAccent.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+          ],
+        );
+      },
+    );
+    setState(() {});
+  }
+```
 ## Langkah 4: Panggil method di ElevatedButton
+```dart
+        child: ElevatedButton(
+          child: const Text('Change Color'),
+          onPressed: () {
+            _showColorDialog(context);
+          },
+        ),
+```
 
 ## Langkah 5: Edit main.dart
+```dart
+      ),
+      // home: const FuturePage(),
+      // home: LocationScreen(),
+      // home: const NavigationFirst(),
+      home: const NavigationDialogScreen(),
 
+      debugShowCheckedModeBanner: false,
+    );
+```
 ## Langkah 6: Run
+<img src="readme_img/gif9-1.gif" alt="Img_1_1" height="800"/>
+
 
 ### Soal 17
 - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
 - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+  ```dart
+              TextButton(
+              child: const Text('Blue'),
+              onPressed: () {
+                color = const Color.fromARGB(255, 7, 4, 136);
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Yellow'),
+              onPressed: () {
+                color = Colors.yellow.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Purple'),
+              onPressed: () {
+                color = Colors.deepPurpleAccent.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+  ```
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
+
+## Hasil
+<img src="readme_img/gif9-1.gif" alt="Img_1_1" height="800"/>

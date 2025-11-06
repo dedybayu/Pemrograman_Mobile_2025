@@ -18,9 +18,48 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
       body: Center(
         child: ElevatedButton(
           child: const Text('Change Color'),
-          onPressed: () {},
+          onPressed: () {
+            _showColorDialog(context);
+          },
         ),
       ),
     );
+  }
+
+  _showColorDialog(BuildContext context) async {
+    await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text('Very important question'),
+          content: const Text('Please choose a color'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Blue'),
+              onPressed: () {
+                color = const Color.fromARGB(255, 7, 4, 136);
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Yellow'),
+              onPressed: () {
+                color = Colors.yellow.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Purple'),
+              onPressed: () {
+                color = Colors.deepPurpleAccent.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+          ],
+        );
+      },
+    );
+    setState(() {});
   }
 }
