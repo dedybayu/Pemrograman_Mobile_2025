@@ -320,17 +320,40 @@ Tambahkan method ini ke dalam class _FuturePageState
       //     .then((value) {
       //       setState(() {
 ```
+
 ## Langkah 3: Run
-![Img_1_1](readme_img/gif4-1.gif.gif)
+![Img_1_1](readme_img/gif4-1.gif)
 
 ### Soal 7
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 7".
 
 
 ## Langkah 4: Ganti variabel futureGroup
+```dart
+  void returnFG() {
+    final futures = Future.wait<int>([
+      returnOneAsync(),
+      returnTwoAsync(),
+      returnThreeAsync(),
+    ]);
 
-## Soal 8
-Jelaskan maksud perbedaan kode langkah 1 dan 4!
+    futures.then((List<int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString();
+      });
+    });
+  }
+```
+### Soal 8
+- Jelaskan maksud perbedaan kode langkah 1 dan 4!
+
+## Hasil
+![Img_1_1](readme_img/gif4-2.gif)
+
 
 ## 
 ## 
