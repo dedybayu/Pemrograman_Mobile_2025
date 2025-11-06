@@ -425,14 +425,98 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
 Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
 
 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
+
+# Praktikum 6: Menggunakan Future dengan StatefulWidget
+
+## Langkah 1: install plugin geolocator
+![Img_1_1](readme_img/image6-1.png)
+
+## Langkah 2: Tambah permission GPS
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+```
+
+## Langkah 3: Buat file geolocation.dart
+```
+dedybayu@DedyBayu-NitroANV15-51:~/Documents/Pemrograman_Mobile_2025/codelab_11_flutter/books$ touch lib/geolocation.dart
+dedybayu@DedyBayu-NitroANV15-51:~/Documents/Pemrograman_Mobile_2025/codelab_11_flutter/books$ ls lib/
+geolocation.dart  main.dart
+```
+
+## Langkah 4: Buat StatefulWidget
+
+## Langkah 5: Isi kode geolocation.dart
+
+### Soal 11
+Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+
+## Langkah 6: Edit main.dart
+```dart
+      ),
+      // home: const FuturePage(),
+      home: LocationScreen(),
+
+      debugShowCheckedModeBanner: false,
+    );
+```
+## Langkah 7: Run
+![Img_1_1](readme_img/gif6-1.gif)
+
+
+## Langkah 8: Tambahkan animasi loading
+```dart
+  @override
+  Widget build(BuildContext context) {
+    final myWidget = myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location DedyBayu')),
+      body: Center(child: myWidget),
+    );
+  }
+```
+
+## Hasil
+<img src="readme_img/gif6-2.gif" alt="Img_1_1" height="800"/>
+
+
+
+### Soal 12
+- Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
+  ```dart
+    Future<void> getMyPosition() async {
+    setState(() {
+      myPosition = '';
+    });
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    // Ambil posisi
+    Position myPos = await getPosition();
+
+    setState(() {
+      myPosition =
+          'Latitude: ${myPos.latitude.toString()} - Longitude: ${myPos.longitude.toString()}';
+    });
+  }
+  ```
+
+  <img src="readme_img/gif6-3.gif" alt="Img_1_1" height="800"/>
+
+- Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+
+  <img src="readme_img/image6-2.png" alt="Img_1_1" height="800"/>
+
+  **Jawaban:** Bisa, karena...... TODO
+
+
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".
+
+
 ## 
 ## 
 ## 
