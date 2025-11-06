@@ -595,22 +595,136 @@ class _LocationScreenState extends State<LocationScreen> {
 # Praktikum 8: Navigation route dengan Future Function
 
 ## Langkah 1: Buat file baru navigation_first.dart
+```
+dedybayu@DedyBayu-NitroANV15-51:~/Documents/Pemrograman_Mobile_2025/codelab_11_flutter/books$ touch lib/navigation_first.dart
+```
 
-## Langkah 1: Buat file baru navigation_first.dart
+## Langkah 2: Isi kode navigation_first.dart
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.deepPurple.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        title: const Text('Navigation First Screen DedyBayu'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Change Color'),
+          onPressed: () {
+            _navigateAndGetColor(context);
+          },
+        ),
+      ),
+    );
+  }
+}
+```
+
 
 ### Soal 15
 - Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
 - Silakan ganti dengan warna tema favorit Anda.
 
 ## Langkah 3: Tambah method di class _NavigationFirstState
+```dart
+  }
+
+  Future _navigateAndGetColor(BuildContext context) async {
+    color =
+        await Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NavigationSecond()),
+        ) ??
+        Colors.blue;
+    setState(() {});
+  }
+}
+
+```
  
 ## Langkah 4: Buat file baru navigation_second.dart
+```
+dedybayu@DedyBayu-NitroANV15-51:~/Documents/Pemrograman_Mobile_2025/codelab_11_flutter/books$ touch lib/navigation_second.dart
+dedybayu@DedyBayu-NitroANV15-51:~/Documents/Pemrograman_Mobile_2025/codelab_11_flutter/books$ ls lib
+geolocation.dart  main.dart  navigation_dialog.dart  navigation_second.dart
+```
 
 ## Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationSecond extends StatefulWidget {
+  const NavigationSecond({super.key});
+
+  @override
+  State<NavigationSecond> createState() => _NavigationSecondState();
+}
+
+class _NavigationSecondState extends State<NavigationSecond> {
+  @override
+  Widget build(BuildContext context) {
+    Color color;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Navigation Second Screen DedyBayu'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              child: const Text('Purple'),
+              onPressed: () {
+                color = Colors.deepPurple.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Green'),
+              onPressed: () {
+                color = Colors.green.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Yellow'),
+              onPressed: () {
+                color = Colors.yellow.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
 
 ## Langkah 6: Edit main.dart
-
+```dart
+      ),
+      // home: const FuturePage(),
+      // home: LocationScreen(),
+      home: const NavigationFirst(),
+      
+      debugShowCheckedModeBanner: false,
+    );
+```
 ## Langkah 8: Run
+<img src="readme_img/gif8-1.gif" alt="Img_1_1" height="800"/>
 
 ### Soal 16
 - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
@@ -623,12 +737,50 @@ class _LocationScreenState extends State<LocationScreen> {
 
 
 
+
+
+
+
+<br>
+<br>
+
 # Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
 
 
 ## Langkah 1: Buat file baru navigation_dialog.dart
+```
+dedybayu@DedyBayu-NitroANV15-51:~/Documents/Pemrograman_Mobile_2025/codelab_11_flutter/books$ touch lib/navigation_dialog.dart
+```
 
 ## Langkah 2: Isi kode navigation_dialog.dart
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationDialogScreen extends StatefulWidget {
+  const NavigationDialogScreen({super.key});
+
+  @override
+  State<NavigationDialogScreen> createState() => _NavigationDialogScreenState();
+}
+
+class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
+  Color color = Colors.purple.shade700;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(title: const Text('Navigation Dialog Screen DedyBayu')),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Change Color'),
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
+}
+```
 
 ## Langkah 3: Tambah method async
 
