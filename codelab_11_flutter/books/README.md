@@ -201,11 +201,50 @@ import 'dart:async';
 ```
 ## Langkah 2: Tambahkan variabel dan method
 Tambahkan variabel late dan method di class _FuturePageState
+```dart
+class _FuturePageState extends State<FuturePage> {
+  String result = '';
+  late Completer completer;
+```
+
+```dart
+  }
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds: 5));
+    completer.complete(42);
+  }
+}
+
+```
 
 ## Langkah 3: Ganti isi kode onPressed()
+```dart
+  child: const Text('GO!'),
+  onPressed: () {
+    getNumber().then((value) {
+      setState(() {
+        result = value.toString();
+      });
+    });
+
+    // count();
+```
 
 ## Langkah 4:
+![Img_1_1](readme_img/gif3-1.gif)
 
+
+### Soal 5
+- Jelaskan maksud kode langkah 2 tersebut!
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".
 ## 
 ## 
 ## 
