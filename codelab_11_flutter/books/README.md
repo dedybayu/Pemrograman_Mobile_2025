@@ -517,6 +517,144 @@ Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerja
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".
 
 
+
+# Praktikum 7: Manajemen Future dengan FutureBuilder
+
+## Langkah 1: Modifikasi method getPosition()
+```dart
+  Future<Position> getPosition() async {
+    await Geolocator.isLocationServiceEnabled();
+    await Future.delayed(const Duration(seconds: 3));
+    Position? position = await Geolocator.getCurrentPosition();
+    return position!;
+  }
+```
+
+## Langkah 2: Tambah variabel
+```dart
+class _LocationScreenState extends State<LocationScreen> {
+  String myPosition = '';
+  Future<Position>? position;
+```
+
+## Langkah 3: Tambah initState()
+```dart
+  @override
+  void initState() {
+    super.initState();
+    // getMyPosition();
+    position = getPosition();
+  }
+```
+## Langkah 4: Edit method build()
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Current Location DedyBayu')),
+      body: Center(
+        child: FutureBuilder(
+          future: position,
+          builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return Text(snapshot.data.toString());
+            } else {
+              return const Text('');
+            }
+          },
+        ),
+      ),
+    );
+  }
+```
+
+## Hasil
+<img src="readme_img/gif7-1.gif" alt="Img_1_1" height="800"/>
+
+### Soal 13
+- Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+  **Jawaban:** Tidak, Karena ..... TODO
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 13".
+
+- Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.
+
+## Langkah 5: Tambah handling error
+
+<img src="readme_img/gif7-2.gif" alt="Img_1_1" height="800"/>
+
+### Soal 14
+- Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+  **Jawaban:** Tidak Karena...... TODO
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
+
+
+# Praktikum 8: Navigation route dengan Future Function
+
+## Langkah 1: Buat file baru navigation_first.dart
+
+## Langkah 1: Buat file baru navigation_first.dart
+
+### Soal 15
+- Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+- Silakan ganti dengan warna tema favorit Anda.
+
+## Langkah 3: Tambah method di class _NavigationFirstState
+ 
+## Langkah 4: Buat file baru navigation_second.dart
+
+## Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+
+## Langkah 6: Edit main.dart
+
+## Langkah 8: Run
+
+### Soal 16
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+- Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
+
+
+
+
+
+
+
+# Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+
+
+## Langkah 1: Buat file baru navigation_dialog.dart
+
+## Langkah 2: Isi kode navigation_dialog.dart
+
+## Langkah 3: Tambah method async
+
+## Langkah 4: Panggil method di ElevatedButton
+
+## Langkah 5: Edit main.dart
+
+## Langkah 6: Run
+
+### Soal 17
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+- Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
+## 
 ## 
 ## 
 ## 
