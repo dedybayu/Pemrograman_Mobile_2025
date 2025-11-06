@@ -185,7 +185,7 @@ Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageStat
                 //     .then((value) {
 ```
 ## Langkah 4: Run
-![Img_1_1](readme_img/gif1.gif)
+![Img_1_1](readme_img/gif2.gif)
 
 ### Soal 4
 - Jelaskan maksud kode langkah 1 dan 2 tersebut!
@@ -245,6 +245,42 @@ class _FuturePageState extends State<FuturePage> {
 - Jelaskan maksud kode langkah 2 tersebut!
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".
-## 
-## 
-## 
+
+## Langkah 5: Ganti method calculate()
+```dart
+  Future calculate() async {
+    // await Future.delayed(const Duration(seconds: 5));
+    // completer.complete(42);
+    try {
+      await Future.delayed(const Duration(seconds: 5));
+      completer.complete(42);
+    } catch (e) {
+      completer.completeError(e);
+    }
+  }
+```
+
+## Langkah 6: Pindah ke onPressed()
+```dart
+    onPressed: () {
+      getNumber()
+          .then((value) {
+            setState(() {
+              result = value.toString();
+            });
+          })
+          .catchError((e) {
+            result = 'An error occurred';
+          });
+
+      // getNumber().then((value) {
+      //   setState(() {
+```
+
+## Hasil
+![Img_1_1](readme_img/gif3-2.gif)
+
+### Soal 6
+- Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 6".
