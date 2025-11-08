@@ -1036,7 +1036,7 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
 
 
 ### Soal 17
-- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+- **Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?**
 
     Saat salah satu button diklik, aplikasi **menutup layar kedua** (NavigationSecond) dan kembali ke layar pertama (NavigationFirst). Background layar pertama **berubah sesuai warna yang dipilih** di button.
 
@@ -1045,7 +1045,7 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
 
   > Jadi setiap klik button **menghasilkan Future yang selesai dengan nilai warna**, dan UI layar pertama berubah secara reaktif sesuai warna tersebut.
 
-- Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+- **Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!**
   ```dart
               TextButton(
               child: const Text('Blue'),
@@ -1069,7 +1069,7 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
               },
             ),
   ```
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".**
 
 ## Hasil
 <img src="readme_img/gif9-1.gif" alt="Img_1_1" height="800"/>
