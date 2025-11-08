@@ -2,9 +2,9 @@
 | ------------ | ------------------ | ---------- | ------- |
 | 08           | Dedy Bayu Setiawan | 2341720041 | TI - 3H |
 
-<br>
+<br><br><br>
 
-# Praktikum 1: Mengambil Foto dengan Kamera di Flutter
+# Praktikum 1: Mengunduh Data dari Web Service (API)
 
 ## Langkah 1: Buat Project Baru
 ![Img_1_1](readme_img/image1-1.png)
@@ -121,12 +121,49 @@ Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan A
 ## Langkah 5: Tambah kode di ElevatedButton
 
 ### Soal 3
-- Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".
+- **Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!**
+
+    **`substring`**
+
+    * Fungsi `substring` digunakan untuk **memotong string**.
+    * Pada kode di atas:
+
+    ```dart
+    value.body.substring(0, 100)
+    ```
+
+    * Artinya: dari hasil response JSON (`value.body`), ambil **100 karakter pertama** saja.
+    * Tujuannya biasanya untuk **menampilkan cuplikan data** di UI, agar tidak memenuhi layar dengan JSON panjang.
+
+    > Contoh: jika `value.body` = `{"title":"Flutter for Beginners","author":"John Doe"}`
+    > `value.body.substring(0, 10)` → `{"title":"`
+
+    **`catchError`**
+
+    * Fungsi `catchError` adalah **penangkap error dari Future**.
+    * Jika request HTTP gagal (misal tidak ada koneksi internet, URL salah, server error), kode di `then()` tidak dijalankan.
+    * `catchError` akan **menangani error tersebut**, misal menampilkan pesan error ke UI:
+
+    ```dart
+    result = "Error: $err";
+    ```
+
+    * Tujuannya: **agar aplikasi tidak crash** dan tetap memberi feedback ke pengguna.
+
+    **Intinya:**
+
+    * `substring` → menampilkan sebagian data JSON agar rapi di layar.
+    * `catchError` → menangani error ketika request API gagal, sehingga aplikasi tetap aman.
+
+
+
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 3".**
 
 ## Hasil
 ![Img_1_1](readme_img/gif1.gif)
 
+
+<br><br><br>
 
 # Praktikum 2: Menggunakan await/async untuk menghindari callbacks
 
@@ -188,9 +225,32 @@ Tambahkan tiga method berisi kode seperti berikut di dalam class _FuturePageStat
 ![Img_1_1](readme_img/gif2.gif)
 
 ### Soal 4
-- Jelaskan maksud kode langkah 1 dan 2 tersebut!
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 4".
+- **Jelaskan maksud kode langkah 1 dan 2 tersebut!**
+  **Langkah 1 – Fungsi Async Individu**
 
+  1. **`returnOneAsync()`**
+    * Menunggu 3 detik (`Future.delayed(Duration(seconds: 3))`) untuk mensimulasikan proses yang lama.
+    * Mengembalikan nilai `1` setelah selesai.
+  2. **`returnTwoAsync()`**
+    * Sama seperti `returnOneAsync()`, tapi mengembalikan `2`.
+  3. **`returnThreeAsync()`**
+    * Sama seperti di atas, mengembalikan `3`.
+  4. **Tujuan**: Membuat fungsi asynchronous yang bisa menunda eksekusi tanpa memblokir UI.
+
+  **Langkah 2 – Method `count()`**
+  1. **Mendeklarasikan total**: `int total = 0;` untuk menampung hasil penjumlahan.
+  2. **Memanggil fungsi async berurutan dengan `await`**:
+    * `total = await returnOneAsync();` → menunggu nilai `1`.
+    * `total += await returnTwoAsync();` → menunggu nilai `2` dan menambahkan ke total.
+    * `total += await returnThreeAsync();` → menunggu nilai `3` dan menambahkan ke total.
+  3. **Update UI dengan `setState()`**: menampilkan hasil total setelah semua fungsi selesai.
+  4. **Tujuan**: Menghindari callback berlapis (callback hell), membuat kode lebih rapi dan mudah dibaca, tapi tetap menunggu setiap operasi asynchronous selesai sebelum lanjut.
+
+
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 4".**
+
+
+<br><br><br>
 
 # Praktikum 3: Menggunakan Completer di Future
 
@@ -242,9 +302,15 @@ class _FuturePageState extends State<FuturePage> {
 
 
 ### Soal 5
-- Jelaskan maksud kode langkah 2 tersebut!
+- J**elaskan maksud kode langkah 2 tersebut!**
 
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".
+  * `Completer` membuat **Future yang dikontrol manual**.
+  * `getNumber()` membuat `Completer` dan mengembalikan `completer.future`.
+  * `calculate()` menunggu 5 detik lalu menyelesaikan Future dengan `completer.complete(42)`.
+  * Intinya: **menghasilkan Future secara manual dan mengirim nilai kapan pun kita mau**.
+
+
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 5".**
 
 ## Langkah 5: Ganti method calculate()
 ```dart
@@ -281,10 +347,17 @@ class _FuturePageState extends State<FuturePage> {
 ![Img_1_1](readme_img/gif3-2.gif)
 
 ### Soal 6
-- Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+- **Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!**
 
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 6".
+  * Tambahan `try-catch` dan `completeError(e)` → Future bisa menandai **error**.
+  * `catchError` di `onPressed` → menangani error agar UI menampilkan pesan aman.
+  * Intinya: Langkah 2 → Future selalu sukses; langkah 5-6 → Future bisa sukses atau gagal dengan penanganan error.
 
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 6".**
+
+
+
+<br><br><br>
 
 # Praktikum 4: Memanggil Future secara paralel
 
@@ -351,9 +424,30 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
 ### Soal 8
 - Jelaskan maksud perbedaan kode langkah 1 dan 4!
 
+  1. **Langkah 1 – `FutureGroup`**
+
+    * Menggunakan `FutureGroup<int>` untuk menampung beberapa Future.
+    * Setiap Future ditambahkan dengan `futureGroup.add()`.
+    * Harus memanggil `futureGroup.close()` sebelum bisa menunggu semua Future selesai.
+    * Cocok jika ingin **menambahkan Future secara dinamis** sebelum menutup group.
+
+  2. **Langkah 4 – `Future.wait`**
+
+    * Menggunakan `Future.wait<int>([ ... ])` untuk mengeksekusi semua Future **secara paralel**.
+    * Lebih **ringkas** dan langsung menunggu semua Future selesai tanpa perlu close group.
+    * Cocok jika jumlah Future **diketahui di awal** dan tidak berubah-ubah.
+
+  **Intinya:**
+
+  * `FutureGroup` → fleksibel, bisa tambah Future satu per satu, tapi lebih verbose.
+  * `Future.wait` → lebih simpel, cocok untuk Future yang sudah diketahui semua di awal.
+
+
 ## Hasil
 ![Img_1_1](readme_img/gif4-2.gif)
 
+
+<br><br><br>
 
 # Praktikum 5: Menangani Respon Error pada Async Code
 
@@ -422,9 +516,31 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
 
 
 ### Soal 10
-Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+- **Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!**
+
+    **Hasil ketika memanggil `handleError()` di ElevatedButton**
+
+    * Jika `handleError()` berhasil (tidak melempar error), **UI menampilkan "Success"**.
+    * Jika terjadi error di dalam `handleError()`, **UI menampilkan pesan error** (misal `Exception: ...`) karena ditangani oleh `catchError`.
+    * `whenComplete()` tetap dijalankan **apapun hasilnya**, misal mencetak `Complete` di console.
 
 
+    **Perbedaan kode langkah 1 dan langkah 4**
+
+    | Aspek            | Langkah 1 (`returnError()`)                       | Langkah 4 (`handleError()`)                                                                                                           |
+    | ---------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+    | Fungsi utama     | Melempar error secara sengaja (`throw Exception`) | Menangani error di dalam fungsi secara internal                                                                                       |
+    | Hasil Future     | Selalu gagal (`Exception`)                        | Bisa berhasil atau gagal tergantung implementasi `handleError()`                                                                      |
+    | Penanganan error | `catchError` di onPressed menangkap error         | `catchError` tetap menangkap jika error terjadi, tapi fungsi lebih fleksibel karena bisa menangani error sendiri sebelum dikembalikan |
+    | Tujuan           | Mencontohkan error di async                       | Mencontohkan penanganan error yang lebih rapi dan aman                                                                                |
+
+    **Kesimpulan:**
+
+    * Langkah 1 → Future selalu gagal untuk latihan error handling.
+    * Langkah 4 → Future bisa berhasil atau gagal, error ditangani lebih aman menggunakan `handleError()`.
+
+
+<br><br><br>
 
 # Praktikum 6: Menggunakan Future dengan StatefulWidget
 
@@ -447,11 +563,62 @@ geolocation.dart  main.dart
 ```
 
 ## Langkah 4: Buat StatefulWidget
+```dart
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
+```
 
 ## Langkah 5: Isi kode geolocation.dart
 
+```dart
+import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
+
+  @override
+  State<LocationScreen> createState() => _LocationScreenState();
+}
+
+class _LocationScreenState extends State<LocationScreen> {
+  String myPosition = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getPosition().then((Position myPos) {
+      myPosition =
+          'Latitude: ${myPos.latitude.toString()} - Longitude: ${myPos.longitude.toString()}';
+      setState(() {
+        myPosition = myPosition;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location')),
+      body: Center(child: Text(myPosition)),
+    );
+  }
+
+  Future<Position> getPosition() async {
+    await Geolocator.requestPermission();
+    await Geolocator.isLocationServiceEnabled();
+    Position? position = await Geolocator.getCurrentPosition();
+    return position!;
+  }
+}
+```
+
 ### Soal 11
 Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+```dart
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location Dedybayu')),
+```
 
 
 ## Langkah 6: Edit main.dart
@@ -506,17 +673,17 @@ Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerja
 
   <img src="readme_img/gif6-3.gif" alt="Img_1_1" height="800"/>
 
-- Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+- **Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?**
 
   <img src="readme_img/image6-2.png" alt="Img_1_1" height="800"/>
 
-  **Jawaban:** Bisa, karena...... TODO
+  **Jawaban:** **_Bisa_**, karena browser modern mendukung API Geolocation, namun hanya jika halaman dijalankan melalui HTTPS atau localhost. Browser akan meminta izin pengguna untuk mengakses lokasi. Jika izin diberikan, Geolocator.getCurrentPosition() dapat mengembalikan koordinat latitude dan longitude.
 
 
 
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".**
 
-
+<br><br><br>
 
 # Praktikum 7: Manajemen Future dengan FutureBuilder
 
@@ -575,7 +742,8 @@ class _LocationScreenState extends State<LocationScreen> {
 
 ### Soal 13
 - Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
-  **Jawaban:** Tidak, Karena ..... TODO
+  
+  **Jawaban:** **_Tidak_**, karena FutureBuilder menampilkan hasil Future dengan cara yang mirip dengan penggunaan setState dan CircularProgressIndicator manual. Perbedaan utamanya ada di kode: FutureBuilder membuat kode lebih clean, reaktif, dan otomatis rebuild UI saat Future selesai, tetapi secara tampilan UI tetap sama.
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 13".
 
@@ -587,10 +755,14 @@ class _LocationScreenState extends State<LocationScreen> {
 
 ### Soal 14
 - Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
-  **Jawaban:** Tidak Karena...... TODO
+  
+  **Jawaban:** **_Tidak_**, karena penambahan handling error hanya memengaruhi cara aplikasi merespon jika terjadi error, bukan tampilan default ketika Future berhasil. Jika Future sukses, UI tetap menampilkan koordinat, sama seperti sebelumnya, hanya lebih aman jika terjadi kegagalan.
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
 
+
+
+<br><br><br>
 
 # Praktikum 8: Navigation route dengan Future Function
 
@@ -634,8 +806,15 @@ class _NavigationFirstState extends State<NavigationFirst> {
 
 
 ### Soal 15
-- Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
-- Silakan ganti dengan warna tema favorit Anda.
+- **Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.**
+
+  **Sudah** diatas
+
+
+- **Silakan ganti dengan warna tema favorit Anda.**
+
+  **Sudah** diatas
+
 
 ## Langkah 3: Tambah method di class _NavigationFirstState
 ```dart
@@ -727,9 +906,20 @@ class _NavigationSecondState extends State<NavigationSecond> {
 <img src="readme_img/gif8-1.gif" alt="Img_1_1" height="800"/>
 
 ### Soal 16
-- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
-- Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
-- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
+- **Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?**
+    
+    Saat salah satu button di **NavigationSecond** diklik, aplikasi akan **kembali ke NavigationFirst**, dan **warna background** pada layar pertama berubah sesuai warna yang dipilih.
+
+    Karena method `_navigateAndGetColor()` memanggil `Navigator.push()` yang **menunggu nilai (Future)** dari layar kedua.
+    Layar kedua menggunakan `Navigator.pop(context, color)` untuk **mengirim warna yang dipilih** kembali ke layar pertama.
+    Setelah Future selesai, `setState()` dijalankan untuk **memperbarui UI dengan warna baru**.
+
+
+- **Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!**
+
+  **Sudah** diatas
+
+- **Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".**
 
 
 
@@ -741,8 +931,7 @@ class _NavigationSecondState extends State<NavigationSecond> {
 
 
 
-<br>
-<br>
+<br><br><br>
 
 # Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
 
@@ -848,6 +1037,13 @@ class _NavigationDialogScreenState extends State<NavigationDialogScreen> {
 
 ### Soal 17
 - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+    Saat salah satu button diklik, aplikasi **menutup layar kedua** (NavigationSecond) dan kembali ke layar pertama (NavigationFirst). Background layar pertama **berubah sesuai warna yang dipilih** di button.
+
+    Karena `Navigator.pop(context, color)` di layar kedua **mengirim nilai warna** kembali ke layar pertama.
+    Layar pertama menunggu nilai ini dengan `await Navigator.push(...)`, lalu memanggil `setState()` untuk **memperbarui UI** dengan warna yang diterima.
+
+  > Jadi setiap klik button **menghasilkan Future yang selesai dengan nilai warna**, dan UI layar pertama berubah secara reaktif sesuai warna tersebut.
 
 - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
   ```dart
