@@ -36,6 +36,10 @@ class _StreamHomePageState extends State<StreamHomePage> {
   late StreamController<int> numberStreamController;
   late NumberStrean numberStream;
 
+  late StreamTransformer transformer;
+
+  
+
   void changeColor() async {
     await for (var eventColor in colorStream.getColor()) {
       setState(() {
@@ -63,7 +67,31 @@ class _StreamHomePageState extends State<StreamHomePage> {
     numberStreamController = numberStream.controller;
     Stream stream = numberStreamController.stream;
 
+
+
+    transformer = StreamTransformer<int, int>.fromHandlers(
+      handleData: (value, sink) {
+        sink.add(value * 10);
+      },
+      handleError: (error, trace, sink) {
+        sink.add(-1);
+      },
+      handleDone: (sink) => sink.close()
+    );
+    // stream
+    //     .listen((event) {
+    //       setState(() {
+    //         lastNumber = event;
+    //       });
+    //     })
+    //     .onError((error) {
+    //       setState(() {
+    //         lastNumber = -1;
+    //       });
+    //     });
+
     stream
+        .transform(transformer)
         .listen((event) {
           setState(() {
             lastNumber = event;
