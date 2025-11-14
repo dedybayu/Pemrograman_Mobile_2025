@@ -351,22 +351,40 @@ import 'dart:math';
 
 ## Langkah 1: Tambah variabel
 ```dart
-
+  late StreamSubscription subscription;
 ```
 
 ## Langkah 2: Edit initState()
 ```dart
+  @override
+  void initState() {
+    numberStream = NumberStrean();
+    numberStreamController = numberStream.controller;
+    Stream stream = numberStreamController.stream;
 
+    subscription = stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    super.initState();
+  }
 ```
 
 ## Langkah 3: Tetap di initState()
 ```dart
-
+    subscription.onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
 ```
 
 ## Langkah 4: Tambah properti onDone()
 ```dart
-
+    subscription.onDone(() {
+      print("OnDone was Called");
+    });
 ```
 
 ```dart
@@ -374,36 +392,56 @@ import 'dart:math';
 ```
 ## Langkah 5: Tambah method baru
 ```dart
-
+  void stopStream() {
+    numberStreamController.close();
+  }
 ```
 
 ## Langkah 6: Pindah ke method dispose()
 ```dart
-
+  @override
+  void dispose() {
+    // numberStreamController.close();
+    subscription.cancel();
+    super.dispose();
+  }
 ```
 
 ## Langkah 7: Pindah ke method build()
 ```dart
-
+            ElevatedButton(
+              onPressed: () => stopStream(),
+              child: Text('Stop Subscription'),
+            ),
 ```
 
-```dart
-
-```
 ## Langkah 8: Edit method addRandomNumber()
 ```dart
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    // numberStream.addNumberToSink(myNum);
+    // numberStream.addError();
 
+    if (!numberStreamController.isClosed) {
+      numberStream.addNumberToSink(myNum);
+    } else {
+      setState(() {
+        lastNumber = -1;
+      });
+    }
+  }
 ```
 
 ## Langkah 9: Run
-```dart
 
-```
+![gif](readme_img/gif4-1.gif)
+
 
 ## Langkah 10: Tekan button ‘Stop Subscription'
-```dart
 
-```
+![gif](readme_img/image4-1.png)
+
 
 
 ### Soal 9
