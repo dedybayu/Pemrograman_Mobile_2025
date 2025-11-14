@@ -458,7 +458,7 @@ import 'dart:math';
 
 ## Langkah 1: Buka file main.dart
 ```dart
-
+  late StreamSubscription subscription2;
 ```
 
 ## Langkah 2: Edit initState()
@@ -467,30 +467,36 @@ import 'dart:math';
 ```
 
 ## Langkah 3: Run
-```dart
 
-```
-```dart
+![gif](readme_img/image5-1.png)
 
-```
 
-```dart
+### Soal 10
+- Jelaskan mengapa error itu bisa terjadi ?
+    **Jawaban:** Error "Stream has already been listened to" terjadi karena satu stream hanya boleh didengarkan sekali. Di kode kamu, stream yang sama dipanggil .listen() dua kali, sehingga Dart menolaknya. Solusinya adalah: gunakan StreamController.broadcast() jika ingin banyak listener, atau cukup gunakan satu listener saja.
 
-```
 ## Langkah 4: Set broadcast stream
 ```dart
-
+  void initState() {
+    numberStream = NumberStrean();
+    numberStreamController = numberStream.controller;
+    // Stream stream = numberStreamController.stream;
+    Stream stream = numberStreamController.stream.asBroadcastStream();
 ```
 
-```dart
-
-```
 ## Langkah 5: Edit method build()
 ```dart
-
+ children: [
+            Text(values),
+            // Text(lastNumber.toString()),
+            ElevatedButton(
+              onPressed: () => addRandomNumber(),
+              child: Text('New Random Number'),
+            ),
 ```
 
 ## Langkah 6: Run
+![gif](readme_img/gif5-1.gif)
 
 
 
