@@ -727,6 +727,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
 ```
 
+![gif](readme_img/gif7-1.gif)
 
 ##
 ##
