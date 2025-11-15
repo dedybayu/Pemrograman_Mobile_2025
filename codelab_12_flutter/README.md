@@ -8,6 +8,7 @@ aa
 # Praktikum 1: Dart Streams
 
 ## Langkah 1: Buat Project Baru
+Buatlah sebuah project flutter baru dengan nama ```stream_nama``` (beri nama panggilan Anda) di folder **week-12/src/** repository GitHub Anda.
 
 ## Langkah 2: Buka file main.dart
 ```dart
@@ -88,9 +89,22 @@ class ColorStream {
     });
 ```
 
+### Soal 3
+- **Jelaskan fungsi keyword yield* pada kode tersebut!**
+
+  **Fungsi `yield*`**
+  `yield*` digunakan untuk **meneruskan seluruh event dari stream lain** ke stream yang sedang dibuat.
+
+- Apa maksud isi perintah kode tersebut?
+
+  **Maksud kode**
+  Kode tersebut membuat stream yang **mengirim warna setiap 1 detik**, dan index warna akan berputar terus menggunakan operasi `t % colors.length`.
+
+- Lakukan commit hasil jawaban Soal 3 dengan pesan "W12: Jawaban Soal 3"
+
 ## Langkah 7: Buka main.dart
 Ketik kode impor file ini pada file main.dart
-```dart 
+```dart
 import 'stream.dart';
 ```
 
@@ -137,7 +151,23 @@ class _StreamHomePageState extends State<StreamHomePage> {
 ## Langkah 12: Run
 ![gif](readme_img/gif1-1.gif)
 
+## Langkah 13: Ganti isi method changeColor()
+Anda boleh comment atau hapus kode sebelumnya, lalu ketika kode seperti berikut.
 
+### Soal 5
+- **Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !**
+
+  **Perbedaan `listen` dan `await for`:**
+
+  * **`await for`** → Menunggu setiap event stream secara berurutan (blocking).
+  * **`listen`** → Menerima event menggunakan callback, berjalan non-blocking, cocok untuk UI.
+
+- Lakukan commit hasil jawaban Soal 5 dengan pesan "W12: Jawaban Soal 5"
+
+
+
+
+<br><br>
 
 # Praktikum 2: Stream controllers dan sinks
 
@@ -257,6 +287,34 @@ import 'dart:math';
 
 ![gif](readme_img/gif2-1.gif)
 
+
+### Soal 6
+- **Jelaskan maksud kode langkah 8 dan 10 tersebut!**
+
+  **Maksud kode langkah 8**
+
+  Pada langkah 8:
+
+  * `NumberStrean()` dibuat untuk menampung StreamController.
+  * `numberStreamController = numberStream.controller` menghubungkan controller ke UI.
+  * `stream.listen(...)` akan **mendengarkan setiap angka baru** yang dikirim ke stream.
+  * Setiap ada event angka masuk, UI di-*update* dengan `setState` sehingga `lastNumber` tampil di layar.
+
+  Intinya: **UI otomatis berubah setiap kali stream mengirim angka.**
+
+  **Maksud kode langkah 10**
+
+  Pada langkah 10:
+
+  * Random number (0–9) dibuat menggunakan `Random().nextInt(10)`.
+  * Angka tersebut dikirim ke stream dengan `addNumberToSink()`.
+  * Karena stream sedang listen, angka baru otomatis tampil di layar.
+
+  Intinya: **Menambahkan angka acak ke stream, lalu angka itu muncul di UI.**
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
+
 ## Langkah 13: Buka stream.dart
 ```dart
   addError() {
@@ -294,11 +352,27 @@ import 'dart:math';
 
 ### Soal 7
 
-- Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+- **Jelaskan maksud kode langkah 13 sampai 15 tersebut!**
+
+  **Maksud kode langkah 13–15**
+
+  * **Langkah 13**
+    Menambahkan `addError()` yang mengirim *error event* ke stream.
+
+  * **Langkah 14**
+    Menambahkan handler `.onError()`, sehingga jika stream menerima error, UI akan menampilkan `-1`.
+
+  * **Langkah 15**
+    Mengganti logika tombol agar selalu memanggil `addError()` → sehingga UI akan menampilkan `-1` setiap kali tombol ditekan.
+
+  Intinya: **Langkah 13–15 digunakan untuk menguji bagaimana stream menangani error, dan UI bereaksi terhadap error dengan menampilkan -1.**
+
 - Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
+
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
 
 
+<br><br>
 
 
 # Praktikum 3: Injeksi data ke streams
@@ -341,10 +415,28 @@ import 'dart:math';
 ![gif](readme_img/gif3-1.gif)
 
 ### Soal 8
-- Jelaskan maksud kode langkah 1-3 tersebut!
+- **Jelaskan maksud kode langkah 1-3 tersebut!**
+
+  * **Langkah 1**
+    Membuat variabel `StreamTransformer` untuk memproses data sebelum diterima UI.
+
+  * **Langkah 2**
+    Membuat transformer yang:
+
+    * mengalikan data dengan **10** (`handleData`)
+    * mengubah error menjadi **-1** (`handleError`)
+    * menutup stream saat selesai (`handleDone`)
+
+  * **Langkah 3**
+    Menerapkan transformer ke stream sebelum `listen`, sehingga UI hanya menerima data yang sudah diproses (hasil ×10 atau -1 jika error).
+
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
 
+
+
+<br><br>
 
 
 # Praktikum 4: Subscribe ke stream events
@@ -445,14 +537,24 @@ import 'dart:math';
 
 
 ### Soal 9
-- Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+- **Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!**
+
+  * **Langkah 2**
+    Membuat `subscription` untuk mendengarkan stream; setiap event baru langsung ditampilkan ke UI.
+
+  * **Langkah 6**
+    `subscription.cancel()` menghentikan listener saat widget dibuang agar tidak terjadi memory leak.
+
+  * **Langkah 8**
+    Mengirim angka hanya jika stream belum ditutup; jika sudah ditutup, tampilkan `-1` agar tidak terjadi error.
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
 
 
 
 
-
+<br><br>
 
 # Praktikum 5: Multiple stream subscriptions
 
@@ -498,17 +600,33 @@ import 'dart:math';
 ## Langkah 6: Run
 ![gif](readme_img/gif5-1.gif)
 
+### Soal 11
+- Jelaskan mengapa hal itu bisa terjadi ?
+
+  Hal tersebut bisa terjadi karena stream sudah diubah menjadi **broadcast stream** menggunakan `.asBroadcastStream()`.
+
+  Broadcast stream **mengizinkan banyak listener** sekaligus, sehingga:
+
+  * `subscription` pertama **dan**
+  * `subscription2` kedua
+
+  dapat menerima data yang sama **secara bersamaan**, tanpa error “Stream has already been listened to”.
+
+  **Kesimpulan**: broadcast stream memungkinkan multi-subscription sehingga semua listener mendapatkan event yang sama.*
+
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
 
 
 
 
+
+<br><br>
 
 # Praktikum 6: StreamBuilder
 
 ## Langkah 1: Buat Project Baru
-```dart
-
-```
 
 ## Langkah 2: Buat file baru stream.dart
 ```dart
@@ -652,12 +770,40 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
 ### Soal 12
 - Jelaskan maksud kode pada langkah 3 dan 7 !
+
+
+Berikut jawaban **singkat dan jelas** untuk **Soal 12**:
+
+---
+
+## ✅ **Jawaban Soal 12 (Singkat)**
+
+  * **Langkah 3 — getNumbers()**
+
+    Method `getNumbers()` menghasilkan stream yang setiap 1 detik:
+
+    * membuat angka random 0–9,
+    * mengirimkannya ke stream menggunakan `yield* Stream.periodic()`.
+
+    **Intinya:** membuat stream yang terus-menerus mengirim angka random setiap detik.
+
+  * **Langkah 7 — StreamBuilder**
+
+    `StreamBuilder` mendengarkan `numberStream` dan otomatis rebuild UI setiap ada data baru.
+
+    * `initialData: 0` → angka awal yang ditampilkan.
+    * Jika ada data (`snapshot.hasData`), UI menampilkan angka tersebut.
+    * Jika error, hanya menampilkan log "Error".
+
+    **Intinya:** StreamBuilder membuat UI selalu update mengikuti data stream tanpa perlu setState manual.
+
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 12".
 
 
 
-
+<br><br>
 
 # Praktikum 7: BLoC Pattern
 
@@ -738,14 +884,13 @@ class MyApp extends StatelessWidget {
 
 ## Langkah 9: Lakukan impor material dan random_bloc.dart
 ```dart
-
+import 'package:flutter/material.dart';
+import 'rancom_bloc.dart';
 ```
 
 
 ## Langkah 10: Buat StatefulWidget RandomScreen
-```dart
-
-```
+Buatlah di dalam file ```random_screen.dart```
 
 
 ## Langkah 11: Buat variabel
@@ -791,16 +936,17 @@ class MyApp extends StatelessWidget {
   }
 ```
 
+
+## Hasil: 
+
 ![gif](readme_img/gif7-1.gif)
 
 ### Soal 13
 - Jelaskan maksud praktikum ini ! Dimanakah letak konsep pola BLoC-nya ?
+  Jawaban: Praktikum ini bertujuan mengenalkan cara memisahkan logika bisnis dari UI menggunakan pola **BLoC (Business Logic Component)**.
+  
+  Konsep BLoC terlihat pada penggunaan StreamController, sink sebagai input event, dan stream sebagai output data. UI hanya mendengarkan stream melalui StreamBuilder, sementara proses pembuatan angka random ditangani di BLoC, sehingga kode lebih rapi dan terpisah.
+  
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 13".
-##
-##
-##
-##
-##
-
 
