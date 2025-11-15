@@ -1,4 +1,3 @@
-aa
 | No. Presensi | Nama               | NIM        | Kelas   |
 | ------------ | ------------------ | ---------- | ------- |
 | 08           | Dedy Bayu Setiawan | 2341720041 | TI - 3H |
