@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListTile(
             title: Text(myPizzas[index].pizzaName),
             subtitle: Text(myPizzas[index].description),
+            trailing: Text('\$${myPizzas[index].price}'),
           );
         },
       ),
@@ -71,14 +72,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> loadJsonPizza() async {
     pizzaString = await DefaultAssetBundle.of(
       context,
-    ).loadString('assets/pizza_list.json');
+    ).loadString('assets/pizza_list_broken.json');
     setState(() {});
   }
 
   Future<List<Pizza>> readJsonFile() async {
     String jsonString = await DefaultAssetBundle.of(
       context,
-    ).loadString('assets/pizza_list.json');
+    ).loadString('assets/pizza_list_broken.json');
     List pizzaMapList = jsonDecode(jsonString);
 
     List<Pizza> myPizzas = [];

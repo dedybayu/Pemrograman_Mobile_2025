@@ -324,23 +324,44 @@ import 'package:store_data_dedybayu/model/pizza.dart';
 # Praktikum 2: Handle kompatibilitas data JSON
 
 ##  Langkah 1: Simulasikan Error
-```dart
-
+```json
+[ 
+    { 
+      "id": "1", 
+      "pizzaName": "Margherita", 
+      "description": "Pizza with tomato, fresh mozzarella and basil",
+      "price": 8.75, 
+      "imageUrl": "images/margherita.png" 
+    }, 
+    { 
+      "id": 2, 
+      "pizzaName": "Marinara", 
+      "description": "Pizza with tomato, garlic and oregano",
+      "price": 7.50, 
+      "imageUrl": null
+    }, 
+    { 
+      "id": 3, 
+      "pizzaName": "Napoli", 
+      "description": null,
+      "price": "9.50", 
+      "imageUrl": "images/marinara.png"  
+    }, 
 ```
 
 ## Langkah 2: Lihat Error Tipe Data String ke Int
-```dart
-
+```json
+      "id": "1", 
 ```
 
 ## Langkah 3: Terapkan tryParse dan Null Coalescing pada ID
 ```dart
-
+      : id = int.tryParse(json['id'].toString()) ?? 0,
 ```
 
 ## Langkah 4: Simulasikan Error Null pada String
 ```dart
-
+        imageUrl = json['imageUrl'] ?? '';
 ```
 
 ## Langkah 5: Terapkan Null Coalescing pada String
@@ -350,7 +371,8 @@ import 'package:store_data_dedybayu/model/pizza.dart';
 
 ## Langkah 6: Gunakan toString() untuk Field String
 ```dart
-
+        pizzaName = json['pizzaName'].toString(),
+        description = json['description'].toString(),
 ```
 
 ## Langkah 7: Simulasikan Error Tipe Data String ke Double
@@ -360,23 +382,34 @@ import 'package:store_data_dedybayu/model/pizza.dart';
 
 ## Langkah 8: Terapkan double.tryParse
 ```dart
-
+  Pizza.fromJson(Map<String, dynamic> json)
+      : id = int.tryParse(json['id'].toString()) ?? 0,
+        pizzaName = json['pizzaName'].toString(),
+        description = json['description'].toString(),
+        price = double.tryParse(json['price'].toString()) ?? 0.0,
+        imageUrl = json['imageUrl'] ?? '';
 ```
 
 ## Langkah 9: Run dan Perhatikan Output Null
-```dart
+![gif](readme_img/image2-1.jpg)
 
-```
 
 ## Langkah 10: Tambahkan Operator Ternary untuk Output User-Friendly
 ```dart
-
+  Pizza.fromJson(Map<String, dynamic> json)
+      : id = int.tryParse(json['id'].toString()) ?? 0,
+        pizzaName = json['pizzaName'] != null && json['pizzaName'].toString().isNotEmpty
+            ? json['pizzaName'].toString()
+            : 'Unknown Pizza',
+        description = json['description'] != null
+            ? json['description'].toString()
+            : 'No description available',
+        price = double.tryParse(json['price'].toString()) ?? 0.0,
+        imageUrl = json['imageUrl'] ?? '';
 ```
 
 ## Langkah 11: Run
-```dart
-
-```
+![gif](readme_img/image2-2.jpg)
 
 ### Soal 4
 - Capture hasil running aplikasi Anda, kemudian impor ke laporan praktikum Anda!
