@@ -424,20 +424,42 @@ import 'package:store_data_dedybayu/model/pizza.dart';
 
 ## Langkah 1: Buka pizza.dart dan Buat Konstanta
 ```dart
-
+const keyId = 'id';
+const keyPizzaName = 'pizzaName';
+const keyDescription = 'description';
+const keyPrice = 'price';
+const keyImageUrl = 'imageUrl';
 ```
  
 ## Langkah 2: Perbarui fromJson() menggunakan Konstanta
 ```dart
-
+  Pizza.fromJson(Map<String, dynamic> json)
+      : id = int.tryParse(json[keyId].toString()) ?? 0,
+        pizzaName = json[keyPizzaName] != null && json[keyPizzaName].toString().isNotEmpty
+            ? json[keyPizzaName].toString()
+            : 'Unknown Pizza',
+        description = json[keyDescription] != null
+            ? json[keyDescription].toString()
+            : 'No description available',
+        price = double.tryParse(json[keyPrice].toString()) ?? 0.0,
+        imageUrl = json[keyImageUrl] ?? '';
 ```
 
 ## Langkah 3: Perbarui toJson() menggunakan Konstanta
 ```dart
-
+  Map<String, dynamic> toJson() {
+    return {
+      keyId: id,
+      keyPizzaName: pizzaName,
+      keyDescription: description,
+      keyPrice: price,
+      keyImageUrl: imageUrl,
+    };
+  }
 ```
 
 ## Langkah 4: Run
+![gif](readme_img/image3-1.jpg)
 
 ### Soal 5
 - Jelaskan maksud kode lebih safe dan maintainable!
