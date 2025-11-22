@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:store_data_dedybayu/model/pizza.dart';
 
@@ -36,6 +37,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int appCounter = 0;
 
+  String documentPath = '';
+  String tempPath = '';
+
+  Future getPaths() async {
+    final docDirectory = await getApplicationDocumentsDirectory();
+    final tempDirectory = await getTemporaryDirectory();
+    setState(() {
+      documentPath = docDirectory.path;
+      tempPath = tempDirectory.path;
+    });
+  }
+
   Future readAndWritePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     appCounter = prefs.getInt('appCounter') ?? 0;
@@ -59,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     readAndWritePreference();
+    getPaths();
     readJsonFile().then((value) {
       setState(() {
         // myPizzas = value;
@@ -87,21 +101,30 @@ class _MyHomePageState extends State<MyHomePage> {
       //     );
       //   },
       // ),
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: <Widget>[
+      //       Text('You have opened this app this many times:'),
+      //       Text(
+      //         '$appCounter',
+      //         style: Theme.of(context).textTheme.headlineMedium,
+      //       ),
+      //       ElevatedButton(
+      //         onPressed: () {
+      //           deletePreference();
+      //         },
+      //         child: const Text('Reset Counter'),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('You have opened this app this many times:'),
-            Text(
-              '$appCounter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                deletePreference();
-              },
-              child: const Text('Reset Counter'),
-            ),
+            Text('Document Path: $documentPath'),
+            Text('Temporary Path: $tempPath'),
           ],
         ),
       ),

@@ -603,39 +603,59 @@ class _MyHomePageState extends State<MyHomePage> {
 # Praktikum 5: Akses filesystem dengan path_provider
 
 ## Langkah 1: Tambahkan Dependensi
-```dart
-
+```bash
+flutter pub add path_provider 
 ```
 
 ## Langkah 2: Lakukan Import
 ```dart
-
+import 'package:path_provider/path_provider.dart';
 ```
 
 ## Langkah 3: Tambahkan Variabel Path State
 ```dart
-
+  String documentPath = '';
+  String tempPath = '';
 ```
 
 ## Langkah 4: Buat Method getPaths()
 ```dart
+  Future getPaths() async {
+    final docDirectory = await getApplicationDocumentsDirectory();
+    final tempDirectory = await getTemporaryDirectory();
+    setState(() {
+      documentPath = docDirectory.path;
+      tempPath = tempDirectory.path;
+    });
+  }
 
 ```
 
 ## Langkah 5: Panggil getPaths() di initState()
 ```dart
-
+  @override
+  void initState() {
+    super.initState();
+    readAndWritePreference();
+    getPaths();
 ```
 
 ## Langkah 6: Perbarui Tampilan
 ```dart
-
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Document Path: $documentPath'),
+            Text('Temporary Path: $tempPath'),
+          ],
+        ),
+      ),
 ```
 
 ## Langkah 7: Run
-```dart
+![gif](readme_img/image5-1.jpg)
 
-```
 
 
 
