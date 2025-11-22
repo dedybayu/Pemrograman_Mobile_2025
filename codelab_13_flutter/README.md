@@ -472,83 +472,130 @@ const keyImageUrl = 'imageUrl';
 <br><br><br>
 
 # Praktikum 4: SharedPreferences
-```dart
 
-```
 
 ## Langkah 1: Tambahkan Dependensi
-```dart
-
+```bash
+flutter pub add shared_preferences
 ```
 
 ## Langkah 2: Install Dependensi
-```dart
+Jalankan flutter pub get jika editor Anda tidak melakukannya secara otomatis.
 
-```
+
 
 ## Langkah 3: Lakukan Import
 ```dart
-
+import 'package:shared_preferences/shared_preferences.dart';
 ```
 
 ## Langkah 4: Tambahkan Variabel appCounter
 ```dart
+class _MyHomePageState extends State<MyHomePage> {
+  String pizzaString = '';
+  List<Pizza> myPizzas = [];
 
+  int appCounter = 0;
 ```
 
 ## Langkah 5: Buat Method readAndWritePreference
 ```dart
-
+  Future readAndWritePreference() async {
+  }
 ```
 
 ## Langkah 6: Dapatkan Instance SharedPreferences
 ```dart
-
+  Future readAndWritePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 ```
 
 ## Langkah 7: Baca, Cek Null, dan Increment Counter
 ```dart
-
+    appCounter = prefs.getInt('appCounter') ?? 0;
+    appCounter++;
 ```
 
 ## Langkah 8: Simpan Nilai Baru
 ```dart
-
+    await prefs.setInt('appCounter', appCounter);
+  }
 ```
 
 ## Langkah 9: Perbarui State
 ```dart
-
+      setState(() {
+        // myPizzas = value;
+        appCounter = appCounter;
+      });
 ```
 
 ## Langkah 10: Panggil di initState()
 ```dart
-
+  @override
+  void initState() {
+    super.initState();
+    readAndWritePreference();
+    readJsonFile().then((value) {
+      setState(() {
+        // myPizzas = value;
+        appCounter = appCounter;
+      });
+    });
+  }
 ```
 
 ## Langkah 11: Perbarui Tampilan (body)
 ```dart
-
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('You have opened this app this many times:'),
+            Text(
+              '$appCounter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Reset Counter'),
+            ),
+          ],
+        ),
+      ),
 ```
 
 ## Langkah 12: Run
-```dart
+![gif](readme_img/gif4-1.gif)
 
-```
 
 ## Langkah 13: Buat Method deletePreference()
 ```dart
-
+  Future deletePreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    setState(() {
+      appCounter = 0;
+    });
+  }
 ```
 
 ## Langkah 14: Panggil deletePreference()
 ```dart
-
+            ElevatedButton(
+              onPressed: () {
+                deletePreference();
+              },
+              child: const Text('Reset Counter'),
+            ),
 ```
 
 ## Langkah 15: Run
+![gif](readme_img/gif4-2.gif)
 
-
+### Soal 6
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".
 
 
 <br><br><br>
