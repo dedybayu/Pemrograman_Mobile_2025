@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:store_data_dedybayu/model/pizza.dart';
@@ -43,6 +44,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late File myFile;
   String fileText = '';
+
+  final pwdController = TextEditingController();
+  String myPass = '';
+
+  final stoorge = const FlutterSecureStorage();
+  final myKey = 'myPass';
+
+  Future writeToSecureStorage() async {
+    await stoorge.write(key: myKey, value: pwdController.text);
+  }
+
+  Future<String?> readFromSecureStorage() async {
+    String secret = await stoorge.read(key: myKey) ?? '';
+    return secret;
+  }
 
   Future getPaths() async {
     final docDirectory = await getApplicationDocumentsDirectory();
@@ -149,22 +165,45 @@ class _MyHomePageState extends State<MyHomePage> {
       //     ],
       //   ),
       // ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Document Path: $documentPath'),
-            Text('Temporary Path: $tempPath'),
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: <Widget>[
+      //       Text('Document Path: $documentPath'),
+      //       Text('Temporary Path: $tempPath'),
 
+      //       ElevatedButton(
+      //         onPressed: () {
+      //           readFile();
+      //         },
+      //         child: const Text('Read File'),
+      //       ),
+      //       Text('File Content: $fileText'),
+      //     ],
+      //   ),
+      // ),
+      body: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(controller: pwdController),
             ElevatedButton(
+              child: const Text('Save Value'),
               onPressed: () {
-                readFile();
+                writeToSecureStorage();
               },
-              child: const Text('Read File'),
             ),
-            Text('File Content: $fileText'),
+            ElevatedButton(
+              child: const Text('Read Value'),
+              onPressed: () {
+                readFromSecureStorage().then((value) {
+                  setState(() {
+                    myPass = value ?? '';
+                  });
+                });
+              },
+            ),
+            Text('$myPass'),
           ],
-        ),
       ),
     );
   }

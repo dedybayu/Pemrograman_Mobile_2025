@@ -757,23 +757,25 @@ import 'dart:io';
 # Praktikum 7: Menyimpan data dengan enkripsi/dekripsi 
 
 ## Langkah 1: Tambahkan Dependensi
-```dart
-
+```bash
+flutter pub add flutter_secure_storage 
 ```
 
 ## Langkah 2: Lakukan Import
 ```dart
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 ```
 
 ## Langkah 3: Tambahkan Variabel dan Controller
 ```dart
-
+final pwdController = TextEditingController();
+String myPass = '';
 ```
 
 ## Langkah 4: Inisialisasi Secure Storage
 ```dart
-
+  final stoorge = const FlutterSecureStorage();
+  final myKey = 'myPass';
 ```
 
 ```dart
@@ -781,93 +783,63 @@ import 'dart:io';
 ```
 ## Langkah 5: Buat Method writeToSecureStorage()
 ```dart
-
+  Future writeToSecureStorage() async {
+    await stoorge.write(key: myKey, value: pwdController.text);
+  }
 ```
 
 ## Langkah 6: Buat Method readFromSecureStorage()
 ```dart
-
+  Future<String?> readFromSecureStorage() async {
+    String secret = await stoorge.read(key: myKey) ?? '';
+    return secret;
+  }
 ```
 
 ## Langkah 7: Edit build() untuk UI dan Logic
 ```dart
-
+      body: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(controller: pwdController),
+            ElevatedButton(
+              child: const Text('Save Value'),
+              onPressed: () {
+                writeToSecureStorage();
+              },
+            ),
 ```
 
 ## Langkah 8: Hubungkan Read ke Tombol
 ```dart
-
+      body: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(controller: pwdController),
+            ElevatedButton(
+              child: const Text('Save Value'),
+              onPressed: () {
+                writeToSecureStorage();
+              },
+            ),
+            ElevatedButton(
+              child: const Text('Read Value'),
+              onPressed: () {
+                readFromSecureStorage().then((value) {
+                  setState(() {
+                    myPass = value ?? '';
+                  });
+                });
+              },
+            ),
+            Text('$myPass'),
+          ],
+      ),
 ```
 
 ## Langkah 9: Run
+![gif](readme_img/gif7-1.gif)
 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-## 
-
-
-
-![gif](readme_img/gif1-1.gif)
+### Soal 9
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 9".
