@@ -463,6 +463,17 @@ const keyImageUrl = 'imageUrl';
 
 ### Soal 5
 - Jelaskan maksud kode lebih safe dan maintainable!
+
+  Kode menjadi **lebih safe** karena:
+
+  * Menggunakan `tryParse` dan pengecekan `null` sehingga aplikasi **tidak crash** jika data JSON kosong, hilang, atau salah format.
+  * Memberikan **default value** sehingga selalu ada nilai aman yang digunakan.
+
+  Kode menjadi **lebih maintainable** karena:
+
+  * Memakai **konstanta key** (misal `keyId`, `keyPizzaName`) sehingga **menghindari typo** dan memudahkan perubahan key JSON cukup dari satu tempat.
+  * Struktur `fromJson()` dan `toJson()` lebih rapi, jelas, dan mudah diperluas jika ada field baru.
+
 - Capture hasil praktikum Anda dan lampirkan di README.
 - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 5".
 
@@ -656,6 +667,9 @@ import 'package:path_provider/path_provider.dart';
 ## Langkah 7: Run
 ![gif](readme_img/image5-1.jpg)
 
+### Soal 7
+- Capture hasil praktikum Anda dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".
 
 
 
@@ -747,6 +761,17 @@ import 'dart:io';
 
 ### Soal 8
 - Jelaskan maksud kode pada langkah 3 dan 7 !
+
+  **Langkah 3**
+
+  Menambahkan state `isLoading` untuk menandai proses fetch data.
+  Tujuannya agar aplikasi bisa menampilkan indikator loading saat data masih diambil dari web service.
+
+  **Langkah 7**
+
+  Menampilkan data hasil fetch ke UI menggunakan `ListView.builder`.
+  Tujuannya agar data dari API bisa ditampilkan secara dinamis dan efisien.
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
 - Lalu lakukan commit dengan pesan "W13: Jawaban Soal 8"
 
