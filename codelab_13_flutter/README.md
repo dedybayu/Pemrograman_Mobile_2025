@@ -665,30 +665,85 @@ import 'package:path_provider/path_provider.dart';
 
 ## Langkah 1: Lakukan Import dart:io
 ```dart
-
+import 'dart:io';
 ```
 
 ## Langkah 2: Tambahkan Variabel File dan Text
 ```dart
-
+  late File myFile;
+  String fileText = '';
 ```
 
 ## Langkah 3: Buat Method writeFile()
 ```dart
-
+  Future<bool> writeFile() async {
+    try {
+      await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 ```
 
 ## Langkah 4: Inisialisasi File dan Panggil writeFile() di initState()
 ```dart
+  @override
+  void initState() {
+    getPaths().then((_) {
+      myFile = File('$documentPath/pizza.txt');
+      writeFile();
+    });
+    super.initState();
 
+    // readAndWritePreference();
+    // getPaths();
+    // readJsonFile().then((value) {
+    //   setState(() {
+    //     // myPizzas = value;
+    //     appCounter = appCounter;
+    //   });
+  }
 ```
 
 ## Langkah 5: Buat Method readFile()
 ```dart
+  Future<bool> readFile() async {
+    try {
+      String fileContent = await myFile.readAsString();
+      setState(() {
+        fileText = fileContent;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+```
 
+## Langkah 6: Edit build() dan Tambahkan Tombol Baca
+```dart
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Document Path: $documentPath'),
+            Text('Temporary Path: $tempPath'),
+
+            ElevatedButton(
+              onPressed: () {
+                readFile();
+              },
+              child: const Text('Read File'),
+            ),
+            Text('File Content: $fileText'),
+          ],
+        ),
+      ),
 ```
 
 ## Langkah 7: Run
+![gif](readme_img/gif6-1.gif)
 
 ### Soal 8
 - Jelaskan maksud kode pada langkah 3 dan 7 !

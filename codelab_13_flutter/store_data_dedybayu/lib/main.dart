@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -40,6 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String documentPath = '';
   String tempPath = '';
 
+  late File myFile;
+  String fileText = '';
+
   Future getPaths() async {
     final docDirectory = await getApplicationDocumentsDirectory();
     final tempDirectory = await getTemporaryDirectory();
@@ -47,6 +51,15 @@ class _MyHomePageState extends State<MyHomePage> {
       documentPath = docDirectory.path;
       tempPath = tempDirectory.path;
     });
+  }
+
+  Future<bool> writeFile() async {
+    try {
+      await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future readAndWritePreference() async {
@@ -68,17 +81,34 @@ class _MyHomePageState extends State<MyHomePage> {
     return jsonEncode(pizzas.map((pizza) => pizza.toJson()).toList());
   }
 
+  Future<bool> readFile() async {
+    try {
+      String fileContent = await myFile.readAsString();
+      setState(() {
+        fileText = fileContent;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
   void initState() {
-    super.initState();
-    readAndWritePreference();
-    getPaths();
-    readJsonFile().then((value) {
-      setState(() {
-        // myPizzas = value;
-        appCounter = appCounter;
-      });
+    getPaths().then((_) {
+      myFile = File('$documentPath/pizza.txt');
+      writeFile();
     });
+    super.initState();
+
+    // readAndWritePreference();
+    // getPaths();
+    // readJsonFile().then((value) {
+    //   setState(() {
+    //     // myPizzas = value;
+    //     appCounter = appCounter;
+    //   });
+    // });
   }
 
   @override
@@ -125,6 +155,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text('Document Path: $documentPath'),
             Text('Temporary Path: $tempPath'),
+
+            ElevatedButton(
+              onPressed: () {
+                readFile();
+              },
+              child: const Text('Read File'),
+            ),
+            Text('File Content: $fileText'),
           ],
         ),
       ),
