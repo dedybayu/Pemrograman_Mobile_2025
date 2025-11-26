@@ -1,7 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:store_data_dedybayu/httphelper.dart';
 import 'package:store_data_dedybayu/models/pizza.dart';
+import 'package:store_data_dedybayu/pizza_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -111,6 +111,18 @@ class _PizzaPageState extends State<PizzaPage> {
                 );
               },
             ),
+
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PizzaDetailScreen(),
+            ),
+          );
+        },
+      ),
     );
   }
 }
