@@ -68,43 +68,54 @@ class _PizzaPageState extends State<PizzaPage> {
               itemBuilder: (context, index) {
                 final p = pizzas[index];
 
-                return Card(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    leading: p.imageUrl.isNotEmpty
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              p.imageUrl,
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) =>
-                                  const Icon(Icons.image),
-                            ),
-                          )
-                        : const Icon(Icons.local_pizza, size: 40),
-
-                    title: Text(
-                      p.pizzaName,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PizzaDetailScreen(isNew: false, pizza: p),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
                     ),
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ListTile(
+                      leading: p.imageUrl.isNotEmpty
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                p.imageUrl,
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, __, ___) =>
+                                    const Icon(Icons.image),
+                              ),
+                            )
+                          : const Icon(Icons.local_pizza, size: 40),
 
-                    subtitle: Text(p.description),
+                      title: Text(
+                        p.pizzaName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
 
-                    trailing: Text(
-                      "\$${p.price}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple,
+                      subtitle: Text(p.description),
+
+                      trailing: Text(
+                        "\$${p.price}",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
+                        ),
                       ),
                     ),
                   ),
@@ -118,7 +129,7 @@ class _PizzaPageState extends State<PizzaPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const PizzaDetailScreen(),
+              builder: (context) => const PizzaDetailScreen(isNew: true),
             ),
           );
         },

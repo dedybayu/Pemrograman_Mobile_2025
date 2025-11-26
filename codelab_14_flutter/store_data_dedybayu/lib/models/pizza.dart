@@ -1,8 +1,8 @@
 const keyId = 'id';
-const keyPizzaName = 'pizza_name';
+const keyPizzaName = 'pizzaName';
 const keyDescription = 'description';
 const keyPrice = 'price';
-const keyImageUrl = 'image_url';
+const keyImageUrl = 'imageUrl';
 
 class Pizza {
   final int id;

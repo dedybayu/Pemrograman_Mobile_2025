@@ -30,9 +30,7 @@ class HttpHelper {
 
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       body: jsonEncode(pizza.toJson()),
     );
 
@@ -43,4 +41,30 @@ class HttpHelper {
       return 'Error: ${response.statusCode}';
     }
   }
+  Future<String> putPizza(Pizza pizza) async {
+    const putPath = 'pizza'; // <-- tanpa slash!
+
+    Uri url = Uri.https(authority, putPath);
+
+    final response = await http.put(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(pizza.toJson()),
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final data = jsonDecode(response.body);
+      return data['message'] ?? 'Success';
+    } else {
+      return 'Error: ${response.statusCode}';
+    }
+  }
+
+  // Future<String> putPizza(Pizza pizza) async {
+  //   const putPath = '/pizza';
+  //   String put = json.encode(pizza.toJson());
+  //   Uri url = Uri.https(authority, putPath);
+  //   http.Response r = await http.put(url, body: put);
+  //   return r.body;
+  // }
 }
