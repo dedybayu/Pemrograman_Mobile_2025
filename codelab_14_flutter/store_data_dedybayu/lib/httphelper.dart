@@ -59,6 +59,21 @@ class HttpHelper {
       return 'Error: ${response.statusCode}';
     }
   }
+Future<String> deletePizza(int id) async {
+  final String deletePath = 'pizza/$id';  // endpoint: /pizza/ID
+
+  Uri url = Uri.https(authority, deletePath);
+
+  final http.Response response = await http.delete(url);
+
+  if (response.statusCode == 200 || response.statusCode == 201) {
+    final data = jsonDecode(response.body);
+    return data['message'] ?? 'Berhasil menghapus';
+  } else {
+    return 'Error: ${response.statusCode}';
+  }
+}
+
 
   // Future<String> putPizza(Pizza pizza) async {
   //   const putPath = '/pizza';
